@@ -25,10 +25,12 @@ public class Player extends Image {
     }
 
     public void reactOnClick() {
-        int moveAmount = MathUtils.random(50,130);
+        int yMoveAmount = MathUtils.random(50,130);
+        int xMoveAmount = 0;
+        float moveDuration = 0.3f;
         Action moveAction = Actions.sequence(
-                Actions.moveBy(0,moveAmount,0.3f, Interpolation.circleOut),
-                Actions.moveBy(0,-moveAmount,0.2f,Interpolation.circle)
+                Actions.moveBy(xMoveAmount,yMoveAmount,moveDuration, Interpolation.circleOut),
+                Actions.moveBy(xMoveAmount,-yMoveAmount,moveDuration,Interpolation.circle)
         );
         this.addAction(moveAction);
     }
