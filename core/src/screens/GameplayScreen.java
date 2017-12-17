@@ -35,7 +35,8 @@ public class GameplayScreen extends AbstractScreen{
 
         playerButton.addListener(new ClickListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("Click");
+                player.reactOnClick();
+                //System.out.println("Click");
                 return super.touchDown(event,x,y,pointer,button);
             }
 
