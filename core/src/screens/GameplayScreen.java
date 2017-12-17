@@ -1,6 +1,10 @@
 package screens;
 
 
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.pl.firstclicker.FirstClickerGame;
 
 import entities.Player;
@@ -8,14 +12,37 @@ import entities.Player;
 public class GameplayScreen extends AbstractScreen{
 
     private Player player;
+    private Button playerButton;
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
     }
 
-    public void init(){
+    @Override
+    protected void init(){
         initPlayer();
+        initPlayerButton();
     }
+
+    private void initPlayerButton() {
+        playerButton = new Button(new ButtonStyle());
+        playerButton.setWidth(460);
+        playerButton.setHeight(360);
+        playerButton.setX(10);
+        playerButton.setY(170);
+        playerButton.setDebug(true);
+        stage.addActor(playerButton);
+
+        playerButton.addListener(new ClickListener(){
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                System.out.println("Click");
+                return super.touchDown(event,x,y,pointer,button);
+            }
+
+        });
+    }
+
+
 
     private void initPlayer() {
         player = new Player();
