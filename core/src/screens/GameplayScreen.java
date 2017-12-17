@@ -10,7 +10,7 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     public void init(){
-         
+
     }
 
 }
