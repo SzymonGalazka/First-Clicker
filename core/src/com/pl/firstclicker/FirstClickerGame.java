@@ -28,7 +28,7 @@ public class FirstClickerGame extends Game {
 
 	private void init(){
 		prefs = Gdx.app.getPreferences(GAME_PREFS);
-		loadscore();
+		loadScore();
 	}
 
 	private void loadScore() {
@@ -37,6 +37,15 @@ public class FirstClickerGame extends Game {
 
 	public void addPoint(){
 		points++;
+		storeGameScore();
+	}
+
+	public void resetGameScore() {
+		points = 0;
+		storeGameScore();
+	}
+
+	private void storeGameScore() {
 		prefs.putInteger(GAME_SCORE,points);
 		prefs.flush();
 	}
@@ -53,4 +62,6 @@ public class FirstClickerGame extends Game {
 	public int getPoints() {
 		return points;
 	}
+
+
 }

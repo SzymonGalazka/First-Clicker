@@ -15,7 +15,7 @@ import entities.Player;
 public class GameplayScreen extends AbstractScreen{
 
     private Player player;
-    private Button playerButton;
+    private Button playerButton, resetScoreButton;
     private Label scoreLabel;
 
     public GameplayScreen(FirstClickerGame game) {
@@ -26,8 +26,10 @@ public class GameplayScreen extends AbstractScreen{
     protected void init(){
         initPlayer();
         initPlayerButton();
+        initResetScoreButton();
         initScoreLabel();
     }
+
 
     private void initScoreLabel() {
         LabelStyle labelStyle = new LabelStyle();
@@ -37,6 +39,24 @@ public class GameplayScreen extends AbstractScreen{
         scoreLabel.setY(650);
         stage.addActor(scoreLabel);
     }
+
+    private void initResetScoreButton() {
+        resetScoreButton = new Button(new ButtonStyle());
+        resetScoreButton.setWidth(50);
+        resetScoreButton.setHeight(25);
+        resetScoreButton.setX(400);
+        resetScoreButton.setY(650);
+        resetScoreButton.setDebug(true);
+        stage.addActor(resetScoreButton);
+
+        resetScoreButton.addListener(new ClickListener(){
+            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+                game.resetGameScore();
+                return super.touchDown(event,x,y,pointer,button);
+            }
+        });
+    }
+
 
     private void initPlayerButton() {
         playerButton = new Button(new ButtonStyle());
