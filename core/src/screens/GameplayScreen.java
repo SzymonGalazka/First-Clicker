@@ -69,7 +69,7 @@ public class GameplayScreen extends AbstractScreen{
         super.render(delta);
         update();
 
-        System.out.println("Points: "+game.getPoints());
+        System.out.println("Points:  "+game.getPoints());
         spriteBatch.begin();
         stage.draw();
         spriteBatch.end();
