@@ -14,6 +14,7 @@ public class GameplayScreen extends AbstractScreen{
     private Player player;
     private Button playerButton;
 
+
     public GameplayScreen(FirstClickerGame game) {
         super(game);
     }
@@ -35,8 +36,9 @@ public class GameplayScreen extends AbstractScreen{
 
         playerButton.addListener(new ClickListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                player.reactOnClick();
                 //System.out.println("Click");
+                player.reactOnClick();
+                game.addPoint();
                 return super.touchDown(event,x,y,pointer,button);
             }
 
@@ -53,6 +55,8 @@ public class GameplayScreen extends AbstractScreen{
     public void render(float delta){
         super.render(delta);
         update();
+
+        System.out.println("Points: "+game.getPoints());
         spriteBatch.begin();
         stage.draw();
         spriteBatch.end();

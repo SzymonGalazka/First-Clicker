@@ -1,10 +1,6 @@
 package com.pl.firstclicker;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import screens.SplashScreen;
 
@@ -16,13 +12,16 @@ public class FirstClickerGame extends Game {
 	public static int HEIGHT = 700;
 
 	private boolean paused;
-	
+	private int points;
+
 	@Override
 	public void create () {
 		this.setScreen(new SplashScreen(this) {
 		});
 	}
-
+	public void addPoint(){
+		points++;
+	}
 // GETTERS AND SETTERS
 
 	public boolean isPaused() {
@@ -31,5 +30,9 @@ public class FirstClickerGame extends Game {
 
 	public void setPaused(boolean paused) {
 		this.paused = paused;
+	}
+
+	public int getPoints() {
+		return points;
 	}
 }
