@@ -1,9 +1,12 @@
 package screens;
 
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.pl.firstclicker.FirstClickerGame;
 
@@ -13,7 +16,7 @@ public class GameplayScreen extends AbstractScreen{
 
     private Player player;
     private Button playerButton;
-
+    private Label scoreLabel;
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
@@ -23,6 +26,16 @@ public class GameplayScreen extends AbstractScreen{
     protected void init(){
         initPlayer();
         initPlayerButton();
+        initScoreLabel();
+    }
+
+    private void initScoreLabel() {
+        LabelStyle labelStyle = new LabelStyle();
+        labelStyle.font = new BitmapFont();
+        scoreLabel = new Label("",labelStyle);
+        scoreLabel.setX(20);
+        scoreLabel.setY(650);
+        stage.addActor(scoreLabel);
     }
 
     private void initPlayerButton() {
@@ -63,6 +76,7 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void update() {
+        scoreLabel.setText("Points:"+game.getPoints());
         stage.act();
     }
 }
