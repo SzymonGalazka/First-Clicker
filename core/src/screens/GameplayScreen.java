@@ -11,11 +11,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.pl.firstclicker.FirstClickerGame;
 
 import entities.Player;
+import ui.IClickCallback;
+import ui.PlayerButton;
 
 public class GameplayScreen extends AbstractScreen{
 
     private Player player;
-    private Button playerButton, resetScoreButton;
+    private PlayerButton playerButton;
+    private Button resetScoreButton;
     private Label scoreLabel;
 
     public GameplayScreen(FirstClickerGame game) {
@@ -59,23 +62,15 @@ public class GameplayScreen extends AbstractScreen{
 
 
     private void initPlayerButton() {
-        playerButton = new Button(new ButtonStyle());
-        playerButton.setWidth(460);
-        playerButton.setHeight(360);
-        playerButton.setX(10);
-        playerButton.setY(170);
-        playerButton.setDebug(true);
-        stage.addActor(playerButton);
-
-        playerButton.addListener(new ClickListener(){
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                //System.out.println("Click");
+        playerButton = new PlayerButton(new IClickCallback() {
+            @Override
+            public void onClick() {
                 player.reactOnClick();
                 game.addPoint();
-                return super.touchDown(event,x,y,pointer,button);
             }
-
         });
+
+        stage.addActor(playerButton);
     }
 
 
