@@ -1,23 +1,21 @@
 package screens;
 
 
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.pl.firstclicker.FirstClickerGame;
 
 import entities.Player;
 import ui.IClickCallback;
 import ui.PlayerButton;
 import ui.ResetScoreButton;
+import ui.ScoreLabel;
 
 public class GameplayScreen extends AbstractScreen{
 
     private Player player;
     private PlayerButton playerButton;
     private Button resetScoreButton;
-    private Label scoreLabel;
+    private ScoreLabel scoreLabel;
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
@@ -33,11 +31,7 @@ public class GameplayScreen extends AbstractScreen{
 
 
     private void initScoreLabel() {
-        LabelStyle labelStyle = new LabelStyle();
-        labelStyle.font = new BitmapFont();
-        scoreLabel = new Label("",labelStyle);
-        scoreLabel.setX(20);
-        scoreLabel.setY(650);
+        scoreLabel = new ScoreLabel();
         stage.addActor(scoreLabel);
     }
 
