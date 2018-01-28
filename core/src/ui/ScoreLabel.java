@@ -12,7 +12,7 @@ public class ScoreLabel extends Label{
     }
 
     private void init() {
-        this.setX(20);
+        this.setX(40);
         this.setY(650);
     }
 
@@ -21,4 +21,6 @@ public class ScoreLabel extends Label{
         labelStyle.font = new BitmapFont();
         return labelStyle;
     }
+
+
 }

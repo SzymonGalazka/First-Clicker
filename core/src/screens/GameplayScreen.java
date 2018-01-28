@@ -1,6 +1,7 @@
 package screens;
 
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.pl.firstclicker.FirstClickerGame;
 
@@ -12,6 +13,7 @@ import ui.ScoreLabel;
 
 public class GameplayScreen extends AbstractScreen{
 
+    private Texture bgTexture;
     private Player player;
     private PlayerButton playerButton;
     private Button resetScoreButton;
@@ -23,6 +25,7 @@ public class GameplayScreen extends AbstractScreen{
 
     @Override
     protected void init(){
+        bgTexture = new Texture("bg.png");
         initPlayer();
         initPlayerButton();
         initResetScoreButton();
@@ -40,7 +43,6 @@ public class GameplayScreen extends AbstractScreen{
             @Override
             public void onClick() {
                 game.resetGameScore();
-              //eturn super.touchDown(event,x,y,pointer,button);
             }
         });
         stage.addActor(resetScoreButton);
@@ -69,7 +71,11 @@ public class GameplayScreen extends AbstractScreen{
         super.render(delta);
         update();
 
-        System.out.println("Points:  "+game.getPoints());
+        spriteBatch.begin();
+        spriteBatch.draw(bgTexture,0,0);
+        spriteBatch.end();
+
+        //System.out.println("Points:  "+game.getPoints());
         spriteBatch.begin();
         stage.draw();
         spriteBatch.end();
