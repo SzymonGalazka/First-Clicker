@@ -33,8 +33,6 @@ public class Player extends Image {
         Action moveAction = Actions.sequence(
                 Actions.moveBy(xMoveAmount,yMoveAmount,moveDuration, Interpolation.circleOut),
                 Actions.moveBy(xMoveAmount,-yMoveAmount,moveDuration,Interpolation.circle),
-                Actions.moveBy(xMoveAmount,yMoveAmount/2,moveDuration/2, Interpolation.circleOut),
-                Actions.moveBy(xMoveAmount,-yMoveAmount/2,moveDuration/2,Interpolation.circle),
                 Actions.moveBy(xMoveAmount,yMoveAmount/4,moveDuration/4, Interpolation.circleOut),
                 Actions.moveBy(xMoveAmount,-yMoveAmount/4,moveDuration/4,Interpolation.circle)
                 );
