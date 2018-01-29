@@ -37,7 +37,7 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void initFlyingObject() {
-        flyingObject1 = new FlyingObject(FlyingObject.FLOUR);
+        flyingObject1 = new FlyingObject(FlyingObject.FlyingObjectType.PASSIVE, game);
         stage.addActor(flyingObject1);
         flyingObject1.fly();
     }
