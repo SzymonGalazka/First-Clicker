@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pl.firstclicker.FirstClickerGame;
 
+import entities.FlyingObject;
 import entities.Player;
 import ui.IClickCallback;
 import ui.PlayerButton;
@@ -19,6 +20,7 @@ public class GameplayScreen extends AbstractScreen{
     private PlayerButton playerButton;
     private Button resetScoreButton;
     private ScoreLabel scoreLabel;
+    private FlyingObject flyingObject1;
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
@@ -31,6 +33,13 @@ public class GameplayScreen extends AbstractScreen{
         initPlayerButton();
         initResetScoreButton();
         initScoreLabel();
+        initFlyingObject();
+    }
+
+    private void initFlyingObject() {
+        flyingObject1 = new FlyingObject(FlyingObject.FlyingObjectType.PASSIVE, game);
+        stage.addActor(flyingObject1);
+        flyingObject1.fly();
     }
 
     private void initBg() {

@@ -39,6 +39,15 @@ public class FirstClickerGame extends Game {
 		points++;
 		storeGameScore();
 	}
+	public void addPoints(int pointsToAdd){
+		points += pointsToAdd;
+		storeGameScore();
+	}
+
+	public void addPassiveIncome() {
+		//TODO implement passive income
+		System.out.println("passive income click");
+	}
 
 	public void resetGameScore() {
 		points = 0;
@@ -62,6 +71,5 @@ public class FirstClickerGame extends Game {
 	public int getPoints() {
 		return points;
 	}
-
 
 }
