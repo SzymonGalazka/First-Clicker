@@ -1,22 +1,24 @@
 package screens;
 
 
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pl.firstclicker.FirstClickerGame;
 
 import entities.Player;
+import ui.IClickCallback;
+import ui.PlayerButton;
+import ui.ResetScoreButton;
+import ui.ScoreLabel;
 
 public class GameplayScreen extends AbstractScreen{
 
+    private Image bgImg;
     private Player player;
-    private Button playerButton, resetScoreButton;
-    private Label scoreLabel;
+    private PlayerButton playerButton;
+    private Button resetScoreButton;
+    private ScoreLabel scoreLabel;
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
@@ -24,58 +26,44 @@ public class GameplayScreen extends AbstractScreen{
 
     @Override
     protected void init(){
+        initBg();
         initPlayer();
         initPlayerButton();
         initResetScoreButton();
         initScoreLabel();
     }
 
+    private void initBg() {
+        bgImg = new Image(new Texture("bg.png"));
+        stage.addActor(bgImg);
+    }
+
 
     private void initScoreLabel() {
-        LabelStyle labelStyle = new LabelStyle();
-        labelStyle.font = new BitmapFont();
-        scoreLabel = new Label("",labelStyle);
-        scoreLabel.setX(20);
-        scoreLabel.setY(650);
+        scoreLabel = new ScoreLabel();
         stage.addActor(scoreLabel);
     }
 
     private void initResetScoreButton() {
-        resetScoreButton = new Button(new ButtonStyle());
-        resetScoreButton.setWidth(50);
-        resetScoreButton.setHeight(25);
-        resetScoreButton.setX(400);
-        resetScoreButton.setY(650);
-        resetScoreButton.setDebug(true);
-        stage.addActor(resetScoreButton);
-
-        resetScoreButton.addListener(new ClickListener(){
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
+        resetScoreButton = new ResetScoreButton(new IClickCallback() {
+            @Override
+            public void onClick() {
                 game.resetGameScore();
-                return super.touchDown(event,x,y,pointer,button);
             }
         });
+        stage.addActor(resetScoreButton);
     }
 
 
     private void initPlayerButton() {
-        playerButton = new Button(new ButtonStyle());
-        playerButton.setWidth(460);
-        playerButton.setHeight(360);
-        playerButton.setX(10);
-        playerButton.setY(170);
-        playerButton.setDebug(true);
-        stage.addActor(playerButton);
-
-        playerButton.addListener(new ClickListener(){
-            public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                //System.out.println("Click");
+        playerButton = new PlayerButton(new IClickCallback() {
+            @Override
+            public void onClick() {
                 player.reactOnClick();
                 game.addPoint();
-                return super.touchDown(event,x,y,pointer,button);
             }
-
         });
+        stage.addActor(playerButton);
     }
 
 
@@ -89,7 +77,7 @@ public class GameplayScreen extends AbstractScreen{
         super.render(delta);
         update();
 
-        System.out.println("Points:  "+game.getPoints());
+        //System.out.println("Points:  "+game.getPoints());
         spriteBatch.begin();
         stage.draw();
         spriteBatch.end();
