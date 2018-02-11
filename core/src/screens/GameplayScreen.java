@@ -8,6 +8,7 @@ import com.pl.firstclicker.FirstClickerGame;
 
 import controllers.FlyingObjectController;
 import entities.Player;
+import service.PassiveIncomeService;
 import ui.IClickCallback;
 import ui.PlayerButton;
 import ui.ResetScoreButton;
@@ -21,6 +22,7 @@ public class GameplayScreen extends AbstractScreen{
     private Button resetScoreButton;
     private ScoreLabel scoreLabel;
     private FlyingObjectController flyingObjectController;
+    private PassiveIncomeService passiveIncomeService;
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
@@ -34,6 +36,28 @@ public class GameplayScreen extends AbstractScreen{
         initResetScoreButton();
         initScoreLabel();
         initFlyingStuffController();
+        initPassiveIncomeService();
+    }
+
+    @Override
+    public void render(float delta){
+        super.render(delta);
+        update();
+
+        //System.out.println("Points:  "+game.getPoints());
+        spriteBatch.begin();
+        stage.draw();
+        spriteBatch.end();
+    }
+
+    private void update() {
+        scoreLabel.setText("Points:"+game.getScoreService().getPoints());
+        stage.act();
+    }
+
+    private void initPassiveIncomeService() {
+        passiveIncomeService = new PassiveIncomeService(game.getScoreService());
+        passiveIncomeService.start();
     }
 
     private void initFlyingStuffController() {
@@ -54,7 +78,7 @@ public class GameplayScreen extends AbstractScreen{
         resetScoreButton = new ResetScoreButton(new IClickCallback() {
             @Override
             public void onClick() {
-                game.resetGameScore();
+                game.getScoreService().resetGameScore();
             }
         });
         stage.addActor(resetScoreButton);
@@ -65,7 +89,7 @@ public class GameplayScreen extends AbstractScreen{
             @Override
             public void onClick() {
                 player.reactOnClick();
-                game.addPoint();
+                game.getScoreService().addPoint();
             }
         });
         stage.addActor(playerButton);
@@ -75,19 +99,5 @@ public class GameplayScreen extends AbstractScreen{
         player = new Player();
         stage.addActor(player);
     }
-    @Override
-    public void render(float delta){
-        super.render(delta);
-        update();
 
-        //System.out.println("Points:  "+game.getPoints());
-        spriteBatch.begin();
-        stage.draw();
-        spriteBatch.end();
-    }
-
-    private void update() {
-        scoreLabel.setText("Points:"+game.getPoints());
-        stage.act();
-    }
 }
