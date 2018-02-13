@@ -1,6 +1,7 @@
 package com.pl.firstclicker;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.graphics.Color;
 
 import screens.SplashScreen;
 import service.ScoreService;
@@ -9,9 +10,10 @@ public class FirstClickerGame extends Game {
 
 	public final static String GAME_NAME = "First Clicker";
 
-	public static int WIDTH = 481;
-	public static int HEIGHT = 700;
+	public static int WIDTH = 720;
+	public static int HEIGHT = 1280;
 
+	public static Color pinky = new Color(192f/255f, 132f/255f, 151f/255f, 255f/255f);
 	private ScoreService scoreService;
 
 	private boolean paused;

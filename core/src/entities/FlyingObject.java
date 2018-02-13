@@ -12,13 +12,13 @@ import com.pl.firstclicker.FirstClickerGame;
 public class FlyingObject extends Image {
 
     public enum FlyingObjectType{
-        FLOUR,PASSIVE
+        PIEROG,FLOUR
     }
     public final static String FLOUR = "flour.png";
-    public final static String DENARIUS = "denarius.png";
+    public final static String PIEROG = "pierog.png";
 
-    public static int WIDTH = 70;
-    public static int HEIGHT = 70;
+    public static int WIDTH = 80;
+    public static int HEIGHT = 80;
 
     private final static int STARTING_X_1 = 0;
     private final static int STARTING_X_2 = FirstClickerGame.WIDTH;
@@ -51,14 +51,14 @@ public class FlyingObject extends Image {
     }
 
     private void reactOnClick() {
-        if(FlyingObjectType.FLOUR.equals(type)) game.getScoreService().addPoints(50);
-        else if (FlyingObjectType.PASSIVE.equals(type)) game.getScoreService().addPassiveIncome();
+        if(FlyingObjectType.PIEROG.equals(type)) game.getScoreService().addPoints(50);
+        else if (FlyingObjectType.FLOUR.equals(type)) game.getScoreService().addPassiveIncome();
         FlyingObject.this.remove();
     }
 
     private static String getTextureString(FlyingObjectType type) {
         if(FlyingObjectType.FLOUR.equals(type)) return FLOUR;
-        else if(FlyingObjectType.PASSIVE.equals(type)) return DENARIUS;
+        else if(FlyingObjectType.PIEROG.equals(type)) return PIEROG;
         return "";
     }
 
@@ -71,14 +71,14 @@ public class FlyingObject extends Image {
         int time1 = MathUtils.random(1,6);
         int time2 = MathUtils.random(1,6);
 
-        int randomYDist = MathUtils.random(-100,100);
+        int randomYDist = MathUtils.random(-200,200);
 
         Action a = Actions.parallel(
-                Actions.moveBy(xSign*300+(MathUtils.random(-200,200)),200+randomYDist,5),
+                Actions.moveBy(xSign*400+(MathUtils.random(-200,200)),300+randomYDist,5),
                 Actions.rotateBy(360,time1)
         );
         Action b = Actions.parallel(
-                Actions.moveBy(xSign*-50+(MathUtils.random(-200,200)),900+randomYDist,3),
+                Actions.moveBy(xSign*-150+(MathUtils.random(-200,200)),900+randomYDist,3),
                 Actions.rotateBy(360,time2)
         );
         Action c = Actions.run(new Runnable() {

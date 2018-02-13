@@ -44,7 +44,7 @@ public class FlyingObjectController {
         if(MathUtils.randomBoolean()){
             flyingObject = new FlyingObject(FlyingObject.FlyingObjectType.FLOUR,game);
         }else{
-            flyingObject = new FlyingObject(FlyingObject.FlyingObjectType.PASSIVE,game);
+            flyingObject = new FlyingObject(FlyingObject.FlyingObjectType.PIEROG,game);
         }
 
         stage.addActor(flyingObject);

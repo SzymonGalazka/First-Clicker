@@ -51,7 +51,7 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void update() {
-        scoreLabel.setText("Points:"+game.getScoreService().getPoints());
+        scoreLabel.setText("POINTS: "+game.getScoreService().getPoints());
         stage.act();
     }
 
@@ -66,8 +66,9 @@ public class GameplayScreen extends AbstractScreen{
 
     private void initBg() {
         bgImg = new Image(new Texture("bg.png"));
+        bgImg.setSize(FirstClickerGame.WIDTH,FirstClickerGame.HEIGHT);
         stage.addActor(bgImg);
-    }
+}
 
     private void initScoreLabel() {
         scoreLabel = new ScoreLabel();

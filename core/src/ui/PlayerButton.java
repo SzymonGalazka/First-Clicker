@@ -12,11 +12,11 @@ public class PlayerButton extends Button{
         }
 
     private void init(final IClickCallback callback) {
-        this.setWidth(460);
-        this.setHeight(360);
-        this.setX(10);
-        this.setY(170);
-        this.setDebug(true);
+        this.setWidth(300);
+        this.setHeight(300);
+        this.setX(210);
+        this.setY(490);
+        this.setDebug(false);
 
         this.addListener(new ClickListener(){
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {

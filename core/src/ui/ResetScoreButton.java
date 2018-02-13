@@ -16,11 +16,11 @@ public class ResetScoreButton extends Button {
     }
 
     private void init(final IClickCallback callback) {
-        this.setWidth(50);
-        this.setHeight(35);
-        this.setX(400);
-        this.setY(630);
-        this.setDebug(true);
+        this.setWidth(100);
+        this.setHeight(40);
+        this.setX(540);
+        this.setY(1150);
+        this.setDebug(false);
         this.addListener(new ClickListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 //System.out.println("Click");
