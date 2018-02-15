@@ -24,16 +24,8 @@ public class ScoreService {
         prefs = Gdx.app.getPreferences(GAME_PREFS);
         loadScore();
         loadPassiveIncome();
-        calculateGainedPassiveIncome();
     }
 
-    private void calculateGainedPassiveIncome() {
-        long savedTimestamp = getSavedTimestamp();
-        if(getSavedTimestamp()>0){
-            long millisPassed = TimeUtils.timeSinceMillis(savedTimestamp);
-            System.out.println("Passed milis: "+ millisPassed);
-        }
-    }
 
     private void loadScore() {
         points = prefs.getInteger(GAME_SCORE);
