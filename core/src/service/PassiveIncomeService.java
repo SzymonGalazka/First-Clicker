@@ -32,7 +32,12 @@ public class PassiveIncomeService {
             long millisPassed = TimeUtils.timeSinceMillis(savedTimestamp);
             long seconds = TimeUnit.MILLISECONDS.toSeconds(millisPassed);
             System.out.println("Passed seconds: "+ seconds);
+            addPointsBasedOnPassedTime(seconds);
         }
     }
 
+    private void addPointsBasedOnPassedTime(long seconds){
+        int points = ((int)seconds * scoreService.getPassiveIncome())/6;
+        scoreService.addPoints(points);
+    }
 }
