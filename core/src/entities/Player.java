@@ -44,7 +44,7 @@ public class Player extends Image {
         this.addAction(moveAction);
         this.addAction(growAction);
 
-        if(this.getHeight() > 170){
+        if(this.getHeight() > 320){
             this.addAction(Actions.rotateBy(MathUtils.randomSign() * 360, 0.4f));
         }
     }

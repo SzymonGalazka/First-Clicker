@@ -2,12 +2,14 @@ package service;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.utils.TimeUtils;
 
 public class ScoreService {
 
     public final static String GAME_PREFS = "com.pl.firstclicker.prefs";
     public final static String GAME_SCORE = "com.pl.firstclicker.prefs.score";
     public final static String GAME_PASSIVE_INCOME = "com.pl.firstclicker.prefs.passiveincome";
+    public final static String GAME_SAVED_TIMESTAMP = "com.pl.firstclicker.prefs.savedtimestamp";
 
     private Preferences prefs;
     private int points;
@@ -17,10 +19,20 @@ public class ScoreService {
         init();
     }
 
+
     private void init() {
         prefs = Gdx.app.getPreferences(GAME_PREFS);
         loadScore();
         loadPassiveIncome();
+        calculateGainedPassiveIncome();
+    }
+
+    private void calculateGainedPassiveIncome() {
+        long savedTimestamp = getSavedTimestamp();
+        if(getSavedTimestamp()>0){
+            long millisPassed = TimeUtils.timeSinceMillis(savedTimestamp);
+            System.out.println("Passed milis: "+ millisPassed);
+        }
     }
 
     private void loadScore() {
@@ -62,5 +74,14 @@ public class ScoreService {
     }
     public int getPassiveIncome() {
         return passiveIncome;
+    }
+
+    public long getSavedTimestamp(){
+        return prefs.getLong(GAME_SAVED_TIMESTAMP);
+    }
+
+    public void saveCurrentTimestamp(){
+        prefs.putLong(GAME_SAVED_TIMESTAMP,TimeUtils.millis());
+        prefs.flush();
     }
 }
