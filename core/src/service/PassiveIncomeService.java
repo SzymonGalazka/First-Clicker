@@ -10,6 +10,7 @@ public class PassiveIncomeService {
 
     private ScoreService scoreService;
 
+    private int pointsToAdd;
     private final static int INFINITE = 100000000;
 
     public PassiveIncomeService(ScoreService scoreService){
@@ -36,8 +37,12 @@ public class PassiveIncomeService {
     }
 
     private void addPointsBasedOnPassedTime(long seconds){
-        int points = ((int)seconds * scoreService.getPassiveIncome())/6;
-        scoreService.addPoints(points);
-        System.out.println("Points added: "+ points);
+        pointsToAdd = ((int)seconds * scoreService.getPassiveIncome())/6;
+        scoreService.addPoints(pointsToAdd); //cos tu jest nie tak
+        System.out.println("Points added: "+ getPointsToAdd());
+    }
+
+    public int getPointsToAdd() {
+        return pointsToAdd;
     }
 }

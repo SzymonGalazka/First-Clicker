@@ -9,10 +9,11 @@ import com.pl.firstclicker.FirstClickerGame;
 import controllers.FlyingObjectController;
 import entities.Player;
 import service.PassiveIncomeService;
+import ui.BasicDialog;
 import ui.IClickCallback;
 import ui.PlayerButton;
 import ui.ResetScoreButton;
-import ui.ScoreLabel;
+import ui.GameLabel;
 
 public class GameplayScreen extends AbstractScreen{
 
@@ -20,7 +21,7 @@ public class GameplayScreen extends AbstractScreen{
     private Player player;
     private PlayerButton playerButton;
     private Button resetScoreButton;
-    private ScoreLabel scoreLabel;
+    private GameLabel gameLabel;
     private FlyingObjectController flyingObjectController;
     private PassiveIncomeService passiveIncomeService;
 
@@ -37,6 +38,15 @@ public class GameplayScreen extends AbstractScreen{
         initScoreLabel();
         initFlyingStuffController();
         initPassiveIncomeService();
+        initPassiveIncomeDialog();
+    }
+
+    private void initPassiveIncomeDialog() {
+        if(passiveIncomeService.getPointsToAdd()>0){
+            BasicDialog basicDialog = new BasicDialog();
+            stage.addActor(basicDialog);
+            basicDialog.initContent("Passive income gained: " + passiveIncomeService.getPointsToAdd());
+        }
     }
 
     @Override
@@ -58,7 +68,7 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void update() {
-        scoreLabel.setText("POINTS: "+game.getScoreService().getPoints());
+        gameLabel.setText("POINTS: "+game.getScoreService().getPoints());
         stage.act();
     }
 
@@ -78,8 +88,8 @@ public class GameplayScreen extends AbstractScreen{
 }
 
     private void initScoreLabel() {
-        scoreLabel = new ScoreLabel();
-        stage.addActor(scoreLabel);
+        gameLabel = new GameLabel();
+        stage.addActor(gameLabel);
     }
 
     private void initResetScoreButton() {
