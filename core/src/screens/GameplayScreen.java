@@ -6,7 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pl.firstclicker.FirstClickerGame;
 
+import java.util.Random;
+
 import controllers.FlyingObjectController;
+import controllers.RandomEventController;
 import entities.Player;
 import service.PassiveIncomeService;
 import ui.BasicDialog;
@@ -22,6 +25,7 @@ public class GameplayScreen extends AbstractScreen{
     private PlayerButton playerButton;
     private Button resetScoreButton;
     private GameLabel gameLabel;
+    private RandomEventController randomEventController;
     private FlyingObjectController flyingObjectController;
     private PassiveIncomeService passiveIncomeService;
 
@@ -39,6 +43,11 @@ public class GameplayScreen extends AbstractScreen{
         initFlyingStuffController();
         initPassiveIncomeService();
         initPassiveIncomeDialog();
+        initRandomEventController();
+    }
+
+    private void initRandomEventController() {
+        randomEventController = new RandomEventController();
     }
 
     private void initPassiveIncomeDialog() {
