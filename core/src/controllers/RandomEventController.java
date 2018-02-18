@@ -2,6 +2,7 @@ package controllers;
 
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Timer;
 import com.pl.firstclicker.FirstClickerGame;
 
@@ -10,9 +11,11 @@ public class RandomEventController {
     public static final int RANDOM_TICK_INTERVAL = 5; //TODO change after initial implementation to higher value
 
     private FirstClickerGame game;
+    private Stage stage;
 
-    public RandomEventController(FirstClickerGame game){
+    public RandomEventController(FirstClickerGame game, Stage stage){
         this.game = game;
+        this.stage = stage;
         init();
     }
 
@@ -28,7 +31,7 @@ public class RandomEventController {
     }
 
     private void triggerRandomEvent() {
-        int randomNumber = MathUtils.random(1,2);
+        int randomNumber = MathUtils.random(1,3);
         switch(randomNumber){
             case 1:
                 addMoneyEvent();
