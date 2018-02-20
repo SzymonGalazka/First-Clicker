@@ -8,6 +8,9 @@ hs_err_pid*
 ## Robovm
 /ios/robovm-build/
 
+## OS Specific
+webservice/venv
+
 ## GWT
 /html/war/
 /html/gwt-unitCache/
@@ -123,3 +126,4 @@ Thumbs.db
 !/ios-moe/xcode/*.xcodeproj/xcshareddata
 !/ios-moe/xcode/*.xcodeproj/project.pbxproj
 /ios-moe/xcode/native/
+webservice/venv/Include/abstract.h
