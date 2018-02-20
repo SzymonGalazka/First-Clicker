@@ -1,9 +1,10 @@
 package screens;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.utils.Timer;
 import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.IRequestCallback;
 
 public abstract class SplashScreen extends AbstractScreen{
 
@@ -12,17 +13,29 @@ public abstract class SplashScreen extends AbstractScreen{
     public SplashScreen(final FirstClickerGame game) {
         super(game);
         init();
-        Timer.schedule(new Timer.Task() {
-            @Override
-            public void run() {
-                game.setScreen(new GameplayScreen(game));
-            }
-        },4);
     }
 
     protected void init(){
         //todo implement better assets loading when game grows
         splashImage = new Texture("SplashScreen.png");
+
+        game.getFeatureFlagService().makeFeatureFlagRequest(new IRequestCallback() {
+            @Override
+            public void onSucceed() {
+                Gdx.app.postRunnable(new Runnable() {
+                    @Override
+                    public void run() {
+                        game.setScreen(new GameplayScreen(game));
+                    }
+                });
+
+            }
+
+            @Override
+            public void onError() {
+                //TODO error message
+            }
+        });
     }
 
     @Override
