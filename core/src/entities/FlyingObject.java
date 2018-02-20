@@ -71,14 +71,14 @@ public class FlyingObject extends Image {
         int time1 = MathUtils.random(1,6);
         int time2 = MathUtils.random(1,6);
 
-        int randomYDist = MathUtils.random(-200,200);
+        int randomYDist = MathUtils.random(-200,500);
 
         Action a = Actions.parallel(
-                Actions.moveBy(xSign*400+(MathUtils.random(-200,200)),300+randomYDist,5),
+                Actions.moveBy(xSign*600+(MathUtils.random(-300,300)),700+randomYDist,5),
                 Actions.rotateBy(360,time1)
         );
         Action b = Actions.parallel(
-                Actions.moveBy(xSign*-150+(MathUtils.random(-200,200)),900+randomYDist,3),
+                Actions.moveBy(xSign*-150+(MathUtils.random(-300,300)),1000+randomYDist,3),
                 Actions.rotateBy(360,time2)
         );
         Action c = Actions.run(new Runnable() {

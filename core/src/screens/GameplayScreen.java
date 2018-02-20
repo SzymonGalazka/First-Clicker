@@ -6,17 +6,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pl.firstclicker.FirstClickerGame;
 
-import java.util.Random;
-
 import controllers.FlyingObjectController;
 import controllers.RandomEventController;
 import entities.Player;
 import service.PassiveIncomeService;
 import ui.BasicDialog;
+import ui.GameLabel;
 import ui.IClickCallback;
 import ui.PlayerButton;
 import ui.ResetScoreButton;
-import ui.GameLabel;
 
 public class GameplayScreen extends AbstractScreen{
 
@@ -76,7 +74,7 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void update() {
-        gameLabel.setText("POINTS: "+game.getScoreService().getPoints());
+        gameLabel.setText("PIEROGIES: "+game.getScoreService().getPoints());
         stage.act();
     }
 

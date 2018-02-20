@@ -10,7 +10,7 @@ import ui.BasicDialog;
 
 public class RandomEventController {
 
-    public static final int RANDOM_TICK_INTERVAL = 5; //TODO change after initial implementation to higher value
+    public static final int RANDOM_TICK_INTERVAL = 15; //TODO change after initial implementation to higher value
 
     private FirstClickerGame game;
     private Stage stage;
