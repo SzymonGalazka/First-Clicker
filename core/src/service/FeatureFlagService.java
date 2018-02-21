@@ -65,7 +65,7 @@ public class FeatureFlagService {
     }
 
     public boolean hasFeature(String s){
-        if(featuresMap.containsKey(s)){
+        if(!featuresMap.containsKey(s)){
             return false;
         }else{
             return featuresMap.get(s);

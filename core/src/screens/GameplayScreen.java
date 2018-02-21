@@ -6,11 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pl.firstclicker.FirstClickerGame;
 
-import org.json.JSONObject;
-
 import controllers.FlyingObjectController;
 import controllers.RandomEventController;
 import entities.Player;
+import service.FeatureFlagService;
 import service.PassiveIncomeService;
 import ui.BasicDialog;
 import ui.GameLabel;
@@ -31,7 +30,6 @@ public class GameplayScreen extends AbstractScreen{
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
-        JSONObject jsonObject;
     }
 
     @Override
@@ -45,6 +43,13 @@ public class GameplayScreen extends AbstractScreen{
         initPassiveIncomeService();
         initPassiveIncomeDialog();
         initRandomEventController();
+        initShop();
+    }
+
+    private void initShop() {
+        if(game.getFeatureFlagService().hasFeature(FeatureFlagService.FEATURE_SHOP)){
+            game.getShopService().dummyMethod();
+        }
     }
 
     private void initRandomEventController() {

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import screens.SplashScreen;
 import service.FeatureFlagService;
 import service.ScoreService;
+import service.ShopService;
 
 public class FirstClickerGame extends Game {
 
@@ -17,6 +18,7 @@ public class FirstClickerGame extends Game {
 	public static Color pinky = new Color(192f/255f, 132f/255f, 151f/255f, 255f/255f);
 	private ScoreService scoreService;
 	private FeatureFlagService featureFlagService;
+	private ShopService shopService;
 
 	private boolean paused;
 
@@ -32,6 +34,11 @@ public class FirstClickerGame extends Game {
 	private void init(){
 		initScoreService();
 		initFeatureFlagService();
+		initShopService();
+	}
+
+	private void initShopService() {
+		shopService = new ShopService();
 	}
 
 	private void initFeatureFlagService() {
@@ -58,5 +65,9 @@ public class FirstClickerGame extends Game {
 
 	public FeatureFlagService getFeatureFlagService() {
 		return featureFlagService;
+	}
+
+	public ShopService getShopService() {
+		return shopService;
 	}
 }
