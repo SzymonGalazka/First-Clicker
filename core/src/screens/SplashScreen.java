@@ -8,7 +8,8 @@ import com.pl.firstclicker.IRequestCallback;
 
 public abstract class SplashScreen extends AbstractScreen{
 
-    private Texture splashImage;
+    private Texture splashImage, noInternetImage;
+    private boolean showError = false;
 
     public SplashScreen(final FirstClickerGame game) {
         super(game);
@@ -18,10 +19,13 @@ public abstract class SplashScreen extends AbstractScreen{
     protected void init(){
         //todo implement better assets loading when game grows
         splashImage = new Texture("SplashScreen.png");
+        noInternetImage = new Texture(("NoInternet.png"));
+
 
         game.getFeatureFlagService().makeFeatureFlagRequest(new IRequestCallback() {
             @Override
             public void onSucceed() {
+                showError = false;
                 Gdx.app.postRunnable(new Runnable() {
                     @Override
                     public void run() {
@@ -33,7 +37,7 @@ public abstract class SplashScreen extends AbstractScreen{
 
             @Override
             public void onError() {
-                //TODO error message
+                showError = true;
             }
         });
     }
@@ -41,9 +45,11 @@ public abstract class SplashScreen extends AbstractScreen{
     @Override
     public void render(float delta) {
         super.render(delta);
-
         spriteBatch.begin();
-        spriteBatch.draw(splashImage,0,0);
+        if(showError){
+            spriteBatch.draw(noInternetImage,0,0);
+        }else{
+            spriteBatch.draw(splashImage,0,0);}
         spriteBatch.end();
     }
 }
