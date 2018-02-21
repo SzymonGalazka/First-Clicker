@@ -6,6 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.pl.firstclicker.FirstClickerGame;
 
+import org.json.JSONObject;
+
 import controllers.FlyingObjectController;
 import controllers.RandomEventController;
 import entities.Player;
@@ -29,6 +31,7 @@ public class GameplayScreen extends AbstractScreen{
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
+        JSONObject jsonObject;
     }
 
     @Override
