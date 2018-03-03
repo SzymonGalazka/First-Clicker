@@ -8,7 +8,7 @@ import com.pl.firstclicker.FirstClickerGame;
 
 import controllers.FlyingObjectController;
 import controllers.RandomEventController;
-import entities.Player;
+import entities.ClickablePierogi;
 import service.FeatureFlagService;
 import service.PassiveIncomeService;
 import service.ShopService;
@@ -23,7 +23,7 @@ import ui.ShopMenu;
 public class GameplayScreen extends AbstractScreen{
 
     private Image bgImg;
-    private Player player;
+    private ClickablePierogi clickablePierogi1, clickablePierogi2, clickableShadows1, clickableShadows2;
     private PlayerButton playerButton;
     private ShopButton shopButton;
     private ShopMenu shopMenu;
@@ -32,6 +32,7 @@ public class GameplayScreen extends AbstractScreen{
     private RandomEventController randomEventController;
     private FlyingObjectController flyingObjectController;
     private PassiveIncomeService passiveIncomeService;
+    private boolean pierogiSwitch = false;
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
@@ -40,7 +41,7 @@ public class GameplayScreen extends AbstractScreen{
     @Override
     protected void init(){
         initBg();
-        initPlayer();
+        initPierogi();
         initPlayerButton();
         initResetScoreButton();
         initScoreLabel();
@@ -134,16 +135,31 @@ public class GameplayScreen extends AbstractScreen{
         playerButton = new PlayerButton(new IClickCallback() {
             @Override
             public void onClick() {
-                player.reactOnClick();
+
+                if(pierogiSwitch){
+                    clickablePierogi2.reactOnClick(false);
+                    clickableShadows2.reactOnClick(true);
+                    pierogiSwitch = false;
+                }else {
+                    clickablePierogi1.reactOnClick(false);
+                    clickableShadows1.reactOnClick(true);
+                    pierogiSwitch = true;
+                }
                 game.getScoreService().addPoint();
             }
         });
         stage.addActor(playerButton);
     }
 
-    private void initPlayer() {
-        player = new Player();
-        stage.addActor(player);
+    private void initPierogi() {
+        clickableShadows1 = new ClickablePierogi("Pierogi Shadows 1");
+        clickableShadows2 = new ClickablePierogi("Pierogi Shadows 2");
+        clickablePierogi1 = new ClickablePierogi("Pierogi Clickable 1");
+        clickablePierogi2 = new ClickablePierogi("Pierogi Clickable 2");
+        stage.addActor(clickableShadows1);
+        stage.addActor(clickableShadows2);
+        stage.addActor(clickablePierogi1);
+        stage.addActor(clickablePierogi2);
     }
 
     public ShopMenu getShopMenu() {

@@ -12,10 +12,10 @@ public class PlayerButton extends Button{
         }
 
     private void init(final IClickCallback callback) {
-        this.setWidth(300);
-        this.setHeight(300);
-        this.setX(210);
-        this.setY(490);
+        this.setWidth(720);
+        this.setHeight(200);
+        this.setX(0);
+        this.setY(300);
         this.setDebug(false);
 
         this.addListener(new ClickListener(){
