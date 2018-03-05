@@ -8,6 +8,7 @@ import service.BalanceService;
 import service.FeatureFlagService;
 import service.ScoreService;
 import service.ShopService;
+import ui.ShopMenu;
 
 public class FirstClickerGame extends Game {
 
@@ -36,16 +37,16 @@ public class FirstClickerGame extends Game {
 	private void init(){
 		initScoreService();
 		initFeatureFlagService();
-		initShopService();
 		initBalanceService();
-	}
-
-	private void initBalanceService() {
-		balanceService = new BalanceService();
+		initShopService();
 	}
 
 	private void initShopService() {
 		shopService = new ShopService();
+	}
+
+	private void initBalanceService() {
+		balanceService = new BalanceService();
 	}
 
 	private void initFeatureFlagService() {
@@ -74,12 +75,11 @@ public class FirstClickerGame extends Game {
 		return featureFlagService;
 	}
 
-	public ShopService getShopService() {
-		return shopService;
-	}
-
 	public BalanceService getBalanceService() {
 		return balanceService;
 	}
 
+	public ShopService getShopService() {
+		return shopService;
+	}
 }

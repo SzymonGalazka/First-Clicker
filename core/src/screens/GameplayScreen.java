@@ -11,17 +11,22 @@ import controllers.RandomEventController;
 import entities.Player;
 import service.FeatureFlagService;
 import service.PassiveIncomeService;
+import service.ShopService;
 import ui.BasicDialog;
 import ui.GameLabel;
 import ui.IClickCallback;
 import ui.PlayerButton;
 import ui.ResetScoreButton;
+import ui.ShopButton;
+import ui.ShopMenu;
 
 public class GameplayScreen extends AbstractScreen{
 
     private Image bgImg;
     private Player player;
     private PlayerButton playerButton;
+    private ShopButton shopButton;
+    private ShopMenu shopMenu;
     private Button resetScoreButton;
     private GameLabel gameLabel;
     private RandomEventController randomEventController;
@@ -48,7 +53,16 @@ public class GameplayScreen extends AbstractScreen{
 
     private void initShop() {
         if(game.getFeatureFlagService().hasFeature(FeatureFlagService.FEATURE_SHOP)){
-            game.getShopService().dummyMethod();
+            shopMenu = new ShopMenu();
+            shopButton = new ShopButton(new IClickCallback() {
+                @Override
+                public void onClick() {
+                    game.getShopService().openShop();
+                    shopMenu.displayMenu();
+                }
+            });
+            stage.addActor(shopButton);
+            stage.addActor(shopMenu);
         }
     }
 
@@ -132,4 +146,7 @@ public class GameplayScreen extends AbstractScreen{
         stage.addActor(player);
     }
 
+    public ShopMenu getShopMenu() {
+        return shopMenu;
+    }
 }
