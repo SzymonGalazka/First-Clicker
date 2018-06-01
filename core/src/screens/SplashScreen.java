@@ -17,7 +17,6 @@ public abstract class SplashScreen extends AbstractScreen{
     }
 
     protected void init(){
-        //todo implement better assets loading when game grows
         splashImage = new Texture("SplashScreen.png");
         noInternetImage = new Texture(("NoInternet.png"));
 
