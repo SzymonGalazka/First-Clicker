@@ -65,7 +65,7 @@ public class RandomEventController {
     }
     private void loseMoneyEvent() {
         game.getScoreService().addPoints(-150);
-        triggerDialog( "You fucked up some pierogies! \n(Pierogies -150)");
+        triggerDialog( "You fucked up\n some pierogies! \n(Pierogies -150)");
     }
 
 }

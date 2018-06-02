@@ -31,9 +31,7 @@ public class BasicDialog extends Image {
         this.addListener(new ClickListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-
                 fadeOutDialog();
-                
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
@@ -47,7 +45,7 @@ public class BasicDialog extends Image {
 
     private void fadeOutDialog() {
         SequenceAction sequence = Actions.sequence();
-        sequence.addAction(Actions.fadeOut(1.5f));
+        sequence.addAction(Actions.fadeOut(1f));
         sequence.addAction(new Action() {
             @Override
             public boolean act(float delta) {
