@@ -34,9 +34,6 @@ public class ClickablePierogi extends Image {
             moveAction = Actions.sequence(
                     Actions.moveBy(0, yMoveAmmount, moveActionTime, Interpolation.circleOut),
                     Actions.moveBy(0, -yMoveAmmount, moveActionTime, Interpolation.circle)
-//                    Actions.moveBy(0, yMoveAmmount / 2, moveActionTime / 3, Interpolation.circleOut),
-//                    Actions.moveBy(0, -yMoveAmmount / 2, moveActionTime / 3, Interpolation.circle)
-
             );
         }else{
             moveAction = Actions.sequence(

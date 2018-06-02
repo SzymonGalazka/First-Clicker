@@ -9,9 +9,9 @@ import com.pl.firstclicker.FirstClickerGame;
 import controllers.FlyingObjectController;
 import controllers.RandomEventController;
 import entities.ClickablePierogi;
+import entities.Shelves;
 import service.FeatureFlagService;
 import service.PassiveIncomeService;
-import service.ShopService;
 import ui.BasicDialog;
 import ui.GameLabel;
 import ui.IClickCallback;
@@ -27,6 +27,7 @@ public class GameplayScreen extends AbstractScreen{
     private PlayerButton playerButton;
     private ShopButton shopButton;
     private ShopMenu shopMenu;
+    private Shelves shelves;
     private Button resetScoreButton;
     private GameLabel gameLabel;
     private RandomEventController randomEventController;
@@ -97,7 +98,7 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void update() {
-        gameLabel.setText("PIEROGIES: "+game.getScoreService().getPoints());
+        gameLabel.setText("PIEROGIES: "+game.getScoreService().getPoints()+"\n\nPASSIVE\nINCOME: "+game.getScoreService().getPassiveIncome());
         stage.act();
     }
 
@@ -114,6 +115,8 @@ public class GameplayScreen extends AbstractScreen{
         bgImg = new Image(new Texture("bg.png"));
         bgImg.setSize(FirstClickerGame.WIDTH,FirstClickerGame.HEIGHT);
         stage.addActor(bgImg);
+        shelves = new Shelves();
+        stage.addActor(shelves);
 }
 
     private void initScoreLabel() {

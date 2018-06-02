@@ -34,8 +34,7 @@ public class ShopItem extends Table{
         texture = new Texture(texturePath);
 
         labelStyle = new Label.LabelStyle();
-        BitmapFont scorefont = new BitmapFont(Gdx.files.internal("poorich.fnt"));
-        labelStyle.font = scorefont;
+        labelStyle.font = new BitmapFont(Gdx.files.internal("scriptfont.fnt"));
         labelStyle.fontColor = FirstClickerGame.pinky;
     }
 }
