@@ -56,11 +56,13 @@ public class GameplayScreen extends AbstractScreen{
     private void initShop() {
         if(game.getFeatureFlagService().hasFeature(FeatureFlagService.FEATURE_SHOP)){
             shopMenu = new ShopMenu();
+
             shopButton = new ShopButton(new IClickCallback() {
                 @Override
                 public void onClick() {
                     game.getShopService().openShop();
                     shopMenu.displayMenu();
+
                 }
             });
             stage.addActor(shopButton);
@@ -75,7 +77,7 @@ public class GameplayScreen extends AbstractScreen{
     private void initPassiveIncomeDialog() {
         if(passiveIncomeService.getPointsToAdd()>0){
             BasicDialog basicDialog = new BasicDialog();
-            basicDialog.showDialog(stage, "Passive income gained: " + passiveIncomeService.getPointsToAdd());
+            basicDialog.showDialog(stage, "Passive income \ngained: " + passiveIncomeService.getPointsToAdd());
         }
     }
 

@@ -56,12 +56,12 @@ public class RandomEventController {
     private void addPassiveIncome() {
         game.getScoreService().addPassiveIncome();
 
-        triggerDialog("Your grandma is feeling better today,\n she is making pierogies faster! \n (Passive income +1)");
+        triggerDialog("Your grandma is feeling better today,\nshe is making pierogies faster! \n (Passive income +1)");
     }
 
     private void addMoneyEvent() {
         game.getScoreService().addPoints(200);
-        triggerDialog( "You just found some pierogies on the floor! \n(Pierogies +200)");
+        triggerDialog( "You just found some \npierogies on the floor! \n(Pierogies +200)");
     }
     private void loseMoneyEvent() {
         game.getScoreService().addPoints(-150);

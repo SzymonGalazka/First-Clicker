@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.pl.firstclicker.FirstClickerGame;
 
 public class BasicDialog extends Image {
 
@@ -25,7 +26,7 @@ public class BasicDialog extends Image {
         this.setPosition(0,465);
 
         label = new GameLabel();
-        label.setPosition(180,640);
+        label.setPosition(FirstClickerGame.WIDTH/2-60,640);
 
         this.addListener(new ClickListener(){
             @Override

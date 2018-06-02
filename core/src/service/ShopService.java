@@ -1,9 +1,6 @@
 package service;
 
-import ui.ShopMenu;
-
 public class ShopService {
-    private boolean shopHidden = true;
 
     public ShopService() {
     }

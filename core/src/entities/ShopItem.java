@@ -22,17 +22,18 @@ public class ShopItem extends Table{
     }
 
     private void displayItem() {
-        this.add(new Image(texture)).expandY().fillY();
-        this.add(new Label(" ",labelStyle)).width(10f).expandY().fillY();
+        this.add(new Image(texture)).width(150f).height(150f);
+        this.add(new Label(" ",labelStyle)).width(70f).expandY().fillY();
         this.add(new Label(title,labelStyle)).width(10f).expandY().fillY();
-        this.add(new Label(" ",labelStyle)).width(30f).expandY().fillY();
+        this.add(new Label(" ",labelStyle)).width(50f).expandY().fillY();
         this.add(new Label(description,labelStyle)).width(10f).expandY().fillY();
+        this.add(new Label(" ",labelStyle)).width(150f).expandY().fillY();
+        this.add(new Label("BUY NOW",labelStyle)).width(20f).expandY().fillY();
     }
 
 
     private void prepareContents() {
         texture = new Texture(texturePath);
-
         labelStyle = new Label.LabelStyle();
         labelStyle.font = new BitmapFont(Gdx.files.internal("scriptfont.fnt"));
         labelStyle.fontColor = FirstClickerGame.pinky;
