@@ -12,6 +12,11 @@ import entities.ShopItem;
 
 
 public class ShopMenu extends Table {
+
+    public enum ItemType{
+        POINTS,PASSIVE
+    }
+
     private ScrollPane scrollPane;
     private ArrayList<ShopItem> shopItems = new ArrayList<ShopItem>();
     private boolean shopHidden;
@@ -34,13 +39,13 @@ public class ShopMenu extends Table {
         this.setBackground(shopBg.getDrawable());
     }
     private void showContents(){
-        shopItems.add(new ShopItem("shopIcon.png","Blue Energy drink","(+1 passive income)\nGives your grandma a solid boost!",20));
-        shopItems.add(new ShopItem("shopIcon.png","Red Energy drink","(+3 passive income)\nGives youur grandma enormous boost!",50));
-        shopItems.add(new ShopItem("shopIcon.png","Black Energy drink","(+10 passive income)\nGives your grandma incredible boost!",200));
-        shopItems.add(new ShopItem("shopIcon.png","Neighbour visit","(+600 pierogies)\nYour grandma's sweetheart came here to help!",500));
-        shopItems.add(new ShopItem("shopIcon.png","Country club","(+2600 pierogies)\nThe whole village is helping!",2000));
-        shopItems.add(new ShopItem("shopIcon.png","Title","gives you a solid boost!",5000));
-        shopItems.add(new ShopItem("shopIcon.png","Title","gives you a solid boost!",100000));
+        shopItems.add(new ShopItem("shopIcon.png","Blue Energy drink","(+1 passive income)\nGives your grandma a solid boost!",20,1,"PASSIVE"));
+        shopItems.add(new ShopItem("shopIcon.png","Red Energy drink","(+3 passive income)\nGives youur grandma enormous boost!",50,3,"PASSIVE"));
+        shopItems.add(new ShopItem("shopIcon.png","Black Energy drink","(+10 passive income)\nGives your grandma incredible boost!",200,10,"PASSIVE"));
+        shopItems.add(new ShopItem("shopIcon.png","Neighbour visit","(+600 pierogies)\nYour grandma's sweetheart came here to help!",500,600,"POINTS"));
+        shopItems.add(new ShopItem("shopIcon.png","Country club","(+2600 pierogies)\nThe whole village is helping!",2000,2600,"POINTS"));
+        shopItems.add(new ShopItem("shopIcon.png","Title","gives you a solid boost!",5000,5600,"POINTS"));
+        shopItems.add(new ShopItem("shopIcon.png","Title","gives you a solid boost!",100000,10600,"POINTS"));
 
 
         Table innerContainer = new Table();

@@ -7,21 +7,26 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
+import service.ShopService;
 import ui.IClickCallback;
 import ui.ShopBuyButton;
 
 public class ShopItem extends Table{
-    private Texture texture;
-    private String title,descr, texturePath;
-    private Label.LabelStyle labelStyle, bigLabelStyle;
-    private int price;
-    ShopBuyButton x1, x10;
 
-    public ShopItem(String texturePath, String title,String descr, int price) {
+
+    private Texture texture;
+    private String title,descr, texturePath, itemType;
+    private Label.LabelStyle labelStyle, bigLabelStyle;
+    private float price,toAdd;
+    private ShopBuyButton x1, x10;
+
+    public ShopItem(String texturePath, String title,String descr, float price, float toAdd, String itemType) {
         this.texturePath = texturePath;
         this.title = title;
         this.descr = descr;
         this.price = price;
+        this.toAdd = toAdd;
+        this.itemType = itemType;
         prepareContents();
         displayItem();
     }
@@ -37,16 +42,21 @@ public class ShopItem extends Table{
         this.add(x1 = new ShopBuyButton(false,new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("klikam sobie"+x1);
+                if(!x1.isDisabled()) buyItem(1);
             }
         })).width(150f).height(35f).padTop(-100f);
         this.add(x10 = new ShopBuyButton(true,new IClickCallback() {
             @Override
             public void onClick() {
-                System.out.println("klikam sobie x10"+x10);
+                if(!x10.isDisabled()) buyItem(10);
             }
         })).width(150f).height(35f).padLeft(-150f).padBottom(-40);
 
+    }
+
+    private void buyItem(int mul){
+        if(itemType=="PASSIVE") ShopService.addPassiveIncomeFromShop(mul*toAdd,mul*price);
+        else if(itemType=="POINTS") ShopService.addPointsFromShop(mul*toAdd,mul*price);
     }
 
 
@@ -58,7 +68,7 @@ public class ShopItem extends Table{
         bigLabelStyle.font = new BitmapFont(Gdx.files.internal("scriptfontbig.fnt"));
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
