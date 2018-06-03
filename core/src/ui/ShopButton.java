@@ -19,6 +19,7 @@ public class ShopButton extends Button{
         this.setX(0);
         this.setY(1124);
         this.setDebug(false);
+
         this.addListener(new ClickListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 callback.onClick();

@@ -62,9 +62,11 @@ public class GameplayScreen extends AbstractScreen{
                 public void onClick() {
                     game.getShopService().openShop();
                     shopMenu.displayMenu();
-
+                    if(game.isPaused()) game.setPaused(false);
+                    else pause();
                 }
             });
+
             stage.addActor(shopButton);
             stage.addActor(shopMenu);
         }
@@ -85,7 +87,6 @@ public class GameplayScreen extends AbstractScreen{
     public void render(float delta){
         super.render(delta);
         update();
-
         //System.out.println("Points:  "+game.getPoints());
         spriteBatch.begin();
         stage.draw();
@@ -102,6 +103,7 @@ public class GameplayScreen extends AbstractScreen{
     private void update() {
         gameLabel.setText("PIEROGIES: "+game.getScoreService().getPoints()+"\n\nPASSIVE\nINCOME: "+game.getScoreService().getPassiveIncome());
         stage.act();
+
     }
 
     private void initPassiveIncomeService() {
@@ -119,6 +121,7 @@ public class GameplayScreen extends AbstractScreen{
         stage.addActor(bgImg);
         shelves = new Shelves();
         stage.addActor(shelves);
+
 }
 
     private void initScoreLabel() {

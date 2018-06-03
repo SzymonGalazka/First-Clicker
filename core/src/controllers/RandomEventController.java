@@ -10,7 +10,7 @@ import ui.BasicDialog;
 
 public class RandomEventController {
 
-    public static final int RANDOM_TICK_INTERVAL = 15; //TODO change after initial implementation to higher value
+    public static final int RANDOM_TICK_INTERVAL = 15; //TODO change to higher value
 
     private FirstClickerGame game;
     private Stage stage;
@@ -25,7 +25,7 @@ public class RandomEventController {
         Timer.schedule(new Timer.Task() {
             @Override
             public void run() {
-                if(MathUtils.randomBoolean()){
+                if(MathUtils.randomBoolean() && !game.isPaused()){
                     triggerRandomEvent();
                 }
             }

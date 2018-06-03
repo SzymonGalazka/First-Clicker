@@ -27,7 +27,7 @@ public class FlyingObjectController {
                 Timer.schedule(new Task() {
                     @Override
                     public void run() {
-                        addRandomFlyingObjectToStage(game,stage);
+                        if(!game.isPaused()) addRandomFlyingObjectToStage(game,stage);
                         randomizeSpawnTime();
                     }
                 },spawnTime);
@@ -39,7 +39,7 @@ public class FlyingObjectController {
         spawnTime = MathUtils.random(5,10);
     }
     private void addRandomFlyingObjectToStage(FirstClickerGame game,Stage stage){
-        FlyingObject flyingObject = null;
+        FlyingObject flyingObject;
 
         if(MathUtils.randomBoolean()){
             flyingObject = new FlyingObject(FlyingObject.FlyingObjectType.FLOUR,game);
@@ -47,8 +47,8 @@ public class FlyingObjectController {
             flyingObject = new FlyingObject(FlyingObject.FlyingObjectType.PIEROG,game);
         }
 
-        stage.addActor(flyingObject);
-        flyingObject.fly();
+            stage.addActor(flyingObject);
+            flyingObject.fly();
     }
 
 }
