@@ -10,10 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class ShopBuyButton extends Button {
 
-
+    boolean multipleClick;
 
     public ShopBuyButton(boolean multipleClick, IClickCallback callback) {
         super(prepareShopButtonStyle(multipleClick));
+        this.multipleClick = multipleClick;
         init(callback);
     }
 
@@ -29,10 +30,20 @@ public class ShopBuyButton extends Button {
 
         });
     }
+
+    private void onBoughtItem(){
+        if(multipleClick){
+
+        }else{
+
+        }
+    }
+
+
     private static ButtonStyle prepareShopButtonStyle(boolean multipleClick){
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("buyButtons.atlas"));
         Skin skin = new Skin(atlas);
-        Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
+        ButtonStyle buttonStyle = new ButtonStyle();
         if(!multipleClick) {
             buttonStyle.up = skin.getDrawable("buyButton");
             buttonStyle.disabled = skin.getDrawable("buyGrayButton");
@@ -42,6 +53,8 @@ public class ShopBuyButton extends Button {
         }
         return buttonStyle;
     }
+
+
 
 
 }

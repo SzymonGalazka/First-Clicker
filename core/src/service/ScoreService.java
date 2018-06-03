@@ -12,8 +12,8 @@ public class ScoreService {
     public final static String GAME_SAVED_TIMESTAMP = "com.pl.firstclicker.prefs.savedtimestamp";
 
     private Preferences prefs;
-    private int points;
-    private int passiveIncome;
+    private float points;
+    private float passiveIncome;
 
     public ScoreService(){
         init();
@@ -28,17 +28,17 @@ public class ScoreService {
 
 
     private void loadScore() {
-        points = prefs.getInteger(GAME_SCORE);
+        points = prefs.getFloat(GAME_SCORE);
     }
 
     private void loadPassiveIncome() {
-        passiveIncome = prefs.getInteger(GAME_PASSIVE_INCOME);
+        passiveIncome = prefs.getFloat(GAME_PASSIVE_INCOME);
     }
 
     public void addPoint(){
         points++;
     }
-    public void addPoints(int pointsToAdd){
+    public void addPoints(float pointsToAdd){
         points += pointsToAdd;
     }
 
@@ -46,15 +46,19 @@ public class ScoreService {
         passiveIncome++;
     }
 
+    public void addPassiveIncome(float income){
+        passiveIncome+=income;
+    }
+
     public void resetGameScore() {
         points = 0;
         passiveIncome = 0;
     }
 
-    public int getPoints() {
+    public float getPoints() {
         return points;
     }
-    public int getPassiveIncome() {
+    public float getPassiveIncome() {
         return passiveIncome;
     }
 
@@ -64,8 +68,8 @@ public class ScoreService {
 
     public void saveCurrentGameState() {
         prefs.putLong(GAME_SAVED_TIMESTAMP,TimeUtils.millis());
-        prefs.putInteger(GAME_SCORE,points);
-        prefs.putInteger(GAME_PASSIVE_INCOME,passiveIncome);
+        prefs.putFloat(GAME_SCORE,points);
+        prefs.putFloat(GAME_PASSIVE_INCOME,passiveIncome);
         prefs.flush();
     }
 }

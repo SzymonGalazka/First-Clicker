@@ -34,6 +34,7 @@ public class GameplayScreen extends AbstractScreen{
     private FlyingObjectController flyingObjectController;
     private PassiveIncomeService passiveIncomeService;
     private boolean pierogiSwitch = false;
+    private String pointsFormatted, passiveIncomeFormatted;
 
     public GameplayScreen(FirstClickerGame game) {
         super(game);
@@ -55,8 +56,7 @@ public class GameplayScreen extends AbstractScreen{
 
     private void initShop() {
         if(game.getFeatureFlagService().hasFeature(FeatureFlagService.FEATURE_SHOP)){
-            shopMenu = new ShopMenu();
-
+            shopMenu = new ShopMenu(game);
             shopButton = new ShopButton(new IClickCallback() {
                 @Override
                 public void onClick() {
@@ -66,7 +66,6 @@ public class GameplayScreen extends AbstractScreen{
                     else pause();
                 }
             });
-
             stage.addActor(shopButton);
             stage.addActor(shopMenu);
         }
@@ -79,7 +78,7 @@ public class GameplayScreen extends AbstractScreen{
     private void initPassiveIncomeDialog() {
         if(passiveIncomeService.getPointsToAdd()>0){
             BasicDialog basicDialog = new BasicDialog();
-            basicDialog.showDialog(stage, "Passive income \ngained: " + passiveIncomeService.getPointsToAdd());
+            basicDialog.showDialog(stage, "Passive income \ngained: " + String.format("%.2f",passiveIncomeService.getPointsToAdd()));
         }
     }
 
@@ -101,7 +100,10 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void update() {
-        gameLabel.setText("PIEROGIES: "+game.getScoreService().getPoints()+"\n\nPASSIVE\nINCOME: "+game.getScoreService().getPassiveIncome());
+        shopMenu.setButtons();
+        pointsFormatted = "PIEROGIES: "+String.format("%.2f", game.getScoreService().getPoints());
+        passiveIncomeFormatted = "\n\nPASSIVE\nINCOME: "+ String.format("%.2f", game.getScoreService().getPassiveIncome());
+        gameLabel.setText(pointsFormatted+passiveIncomeFormatted);
         stage.act();
 
     }
@@ -168,9 +170,5 @@ public class GameplayScreen extends AbstractScreen{
         stage.addActor(clickableShadows2);
         stage.addActor(clickablePierogi1);
         stage.addActor(clickablePierogi2);
-    }
-
-    public ShopMenu getShopMenu() {
-        return shopMenu;
     }
 }

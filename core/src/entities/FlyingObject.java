@@ -14,6 +14,7 @@ public class FlyingObject extends Image {
     public enum FlyingObjectType{
         PIEROG,FLOUR
     }
+
     public final static String FLOUR = "flour.png";
     public final static String PIEROG = "pierog.png";
 
@@ -37,7 +38,6 @@ public class FlyingObject extends Image {
         this.setOrigin(WIDTH/2,HEIGHT/2);
         this.setSize(WIDTH,HEIGHT);
 
-        //to ponizej to taki skrocony if(MathUtils.randomBolean() if... else...
         startingX = MathUtils.randomBoolean() ? STARTING_X_1 : STARTING_X_2;
         this.setPosition(startingX,STARTING_Y);
 
@@ -52,7 +52,7 @@ public class FlyingObject extends Image {
 
     private void reactOnClick() {
         if(FlyingObjectType.PIEROG.equals(type)) game.getScoreService().addPoints(game.getBalanceService().getMoneyClickValue());
-        else if (FlyingObjectType.FLOUR.equals(type)) game.getScoreService().addPassiveIncome();
+        else if (FlyingObjectType.FLOUR.equals(type)) game.getScoreService().addPassiveIncome(0.1f);
         FlyingObject.this.remove();
     }
 
@@ -64,7 +64,7 @@ public class FlyingObject extends Image {
 
     public void fly(){
 
-        int xSign = 0;
+        int xSign;
         if(startingX == STARTING_X_1) xSign = 1;
         else xSign = -1;
 
