@@ -13,9 +13,6 @@ import entities.ShopItem;
 
 public class ShopMenu extends Table {
 
-    public enum ItemType{
-        POINTS,PASSIVE
-    }
 
     private ScrollPane scrollPane;
     private ArrayList<ShopItem> shopItems = new ArrayList<ShopItem>();
@@ -30,11 +27,11 @@ public class ShopMenu extends Table {
         this.setHeight(FirstClickerGame.HEIGHT-280f);
         this.setPosition(0,30);
         this.setVisible(false);
-        showBackground();
+        setBackground();
         showContents();
     }
 
-    private void showBackground(){
+    private void setBackground(){
         shopBg = new Image(new Texture("shopBg.png"));
         this.setBackground(shopBg.getDrawable());
     }
@@ -49,8 +46,8 @@ public class ShopMenu extends Table {
 
 
         Table innerContainer = new Table();
-        innerContainer.padBottom(20f);
-        innerContainer.padTop(20f);
+        innerContainer.padBottom(50f);
+        innerContainer.padTop(50f);
         for(ShopItem i : shopItems){
             innerContainer.add(i).expand().fill();
             innerContainer.row();

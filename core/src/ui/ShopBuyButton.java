@@ -31,15 +31,6 @@ public class ShopBuyButton extends Button {
         });
     }
 
-    private void onBoughtItem(){
-        if(multipleClick){
-
-        }else{
-
-        }
-    }
-
-
     private static ButtonStyle prepareShopButtonStyle(boolean multipleClick){
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("buyButtons.atlas"));
         Skin skin = new Skin(atlas);

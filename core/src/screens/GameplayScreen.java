@@ -15,8 +15,9 @@ import service.PassiveIncomeService;
 import ui.BasicDialog;
 import ui.GameLabel;
 import ui.IClickCallback;
+import ui.MainMenu;
 import ui.PlayerButton;
-import ui.ResetScoreButton;
+import ui.MainMenuButton;
 import ui.ShopButton;
 import ui.ShopMenu;
 
@@ -28,12 +29,13 @@ public class GameplayScreen extends AbstractScreen{
     private ShopButton shopButton;
     private ShopMenu shopMenu;
     private Shelves shelves;
-    private Button resetScoreButton;
+    private Button mainMenuButton;
     private GameLabel gameLabel;
     private RandomEventController randomEventController;
     private FlyingObjectController flyingObjectController;
     private PassiveIncomeService passiveIncomeService;
     private boolean pierogiSwitch = false;
+    private MainMenu mainMenu;
     private String pointsFormatted, passiveIncomeFormatted;
 
     public GameplayScreen(FirstClickerGame game) {
@@ -45,7 +47,7 @@ public class GameplayScreen extends AbstractScreen{
         initBg();
         initPierogi();
         initPlayerButton();
-        initResetScoreButton();
+        initMainMenu();
         initScoreLabel();
         initFlyingStuffController();
         initPassiveIncomeService();
@@ -131,14 +133,18 @@ public class GameplayScreen extends AbstractScreen{
         stage.addActor(gameLabel);
     }
 
-    private void initResetScoreButton() {
-        resetScoreButton = new ResetScoreButton(new IClickCallback() {
+    private void initMainMenu() {
+        mainMenu = new MainMenu();
+        mainMenuButton = new MainMenuButton(new IClickCallback() {
             @Override
             public void onClick() {
-                game.getScoreService().resetGameScore();
+                mainMenu.displayMenu();
+                if(game.isPaused()) game.setPaused(false);
+                else pause();
             }
         });
-        stage.addActor(resetScoreButton);
+        stage.addActor(mainMenuButton);
+        stage.addActor(mainMenu);
     }
 
     private void initPlayerButton() {

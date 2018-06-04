@@ -39,7 +39,7 @@ public class RandomEventController {
                 addMoneyEvent();
                 break;
             case 2:
-                loseMoneyEvent();
+                if(game.getScoreService().getPoints()>150)  loseMoneyEvent();
                 break;
             case 3:
                 addPassiveIncome();
