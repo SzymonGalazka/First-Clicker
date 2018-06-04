@@ -7,10 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-public class ResetScoreButton extends Button {
+public class MenuUIButton extends Button {
 
-    public ResetScoreButton(IClickCallback callback){
-        super(prepareResetButtonStyle());
+    public MenuUIButton(boolean r,IClickCallback callback){
+        super(prepareResetButtonStyle(r));
         init(callback);
     }
 
@@ -27,11 +27,12 @@ public class ResetScoreButton extends Button {
         });
     }
 
-    private static ButtonStyle prepareResetButtonStyle(){
+    private static ButtonStyle prepareResetButtonStyle(boolean r){
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("buyButtons.atlas"));
         Skin skin = new Skin(atlas);
         ButtonStyle buttonStyle = new ButtonStyle();
-        buttonStyle.up = skin.getDrawable("buyButton");
+        if(r) buttonStyle.up = skin.getDrawable("buyButton");
+        else buttonStyle.up = skin.getDrawable("buy10Button");
         return buttonStyle;
     }
 }

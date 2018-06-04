@@ -17,7 +17,7 @@ public class MainMenu extends Table {
     public MainMenu(){
         this.setWidth(2*FirstClickerGame.WIDTH/3);
         this.setHeight(FirstClickerGame.HEIGHT/3);
-        this.setPosition(FirstClickerGame.WIDTH/4,2*FirstClickerGame.WIDTH/3);
+        this.setPosition(FirstClickerGame.WIDTH/6,3*FirstClickerGame.WIDTH/4);
         this.setVisible(false);
 
         prepareContents();
@@ -27,10 +27,17 @@ public class MainMenu extends Table {
     private void init() {
         this.add(new Label("MAIN MENU",labelStyle)).height(100f).padTop(50f);
         this.row();
-        this.add(new ResetScoreButton(new IClickCallback() {
+        this.add(new MenuUIButton(true, new IClickCallback() {
             @Override
             public void onClick() {
                 System.out.println("Reseeeet");
+            }
+        })).padTop(50f);
+        this.row();
+        this.add(new MenuUIButton(false, new IClickCallback() {
+            @Override
+            public void onClick() {
+               Gdx.app.exit();
             }
         })).padTop(50f);
         this.top();
