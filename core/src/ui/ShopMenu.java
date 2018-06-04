@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 
 import java.util.ArrayList;
 
@@ -18,13 +18,13 @@ public class ShopMenu extends Table {
     private ArrayList<ShopItem> shopItems = new ArrayList<ShopItem>();
     private boolean shopHidden;
     private Image shopBg;
-    private static FirstClickerGame game;
+    private static PierogiClicker game;
 
-    public ShopMenu(FirstClickerGame game) {
+    public ShopMenu(PierogiClicker game) {
         super();
         this.game = game;
-        this.setWidth(FirstClickerGame.WIDTH);
-        this.setHeight(FirstClickerGame.HEIGHT-280f);
+        this.setWidth(PierogiClicker.WIDTH);
+        this.setHeight(PierogiClicker.HEIGHT-280f);
         this.setPosition(0,30);
         this.setVisible(false);
         setBackground();

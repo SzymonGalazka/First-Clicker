@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.Timer.Task;
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 
 import entities.FlyingObject;
 
@@ -13,11 +13,11 @@ public class FlyingObjectController {
     private int spawnTime;
 
 
-    public FlyingObjectController(FirstClickerGame game, Stage stage) {
+    public FlyingObjectController(PierogiClicker game, Stage stage) {
         init(game, stage);
     }
 
-    private void init(final FirstClickerGame game,final Stage stage){
+    private void init(final PierogiClicker game, final Stage stage){
         randomizeSpawnTime();
 
         Timer.schedule(new Task() {
@@ -38,7 +38,7 @@ public class FlyingObjectController {
     private void randomizeSpawnTime() {
         spawnTime = MathUtils.random(5,10);
     }
-    private void addRandomFlyingObjectToStage(FirstClickerGame game,Stage stage){
+    private void addRandomFlyingObjectToStage(PierogiClicker game, Stage stage){
         FlyingObject flyingObject;
 
         if(MathUtils.randomBoolean()){

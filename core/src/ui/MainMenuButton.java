@@ -4,7 +4,7 @@ package ui;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 
 public class MainMenuButton extends Button {
 
@@ -14,9 +14,9 @@ public class MainMenuButton extends Button {
     }
 
     private void init(final IClickCallback callback) {
-        this.setWidth(FirstClickerGame.WIDTH/3);
+        this.setWidth(PierogiClicker.WIDTH/3);
         this.setHeight(150);
-        this.setX(2*FirstClickerGame.WIDTH/3);
+        this.setX(2* PierogiClicker.WIDTH/3);
         this.setY(1124);
         this.setDebug(false);
         this.addListener(new ClickListener() {

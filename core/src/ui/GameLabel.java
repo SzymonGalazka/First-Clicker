@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 
 public class GameLabel extends Label{
 
@@ -15,8 +15,8 @@ public class GameLabel extends Label{
     }
 
     private void init() {
-        this.setX(FirstClickerGame.WIDTH/3+30);
-        this.setY(FirstClickerGame.HEIGHT-80);
+        this.setX(PierogiClicker.WIDTH/3+30);
+        this.setY(PierogiClicker.HEIGHT-80);
     }
 
     private static LabelStyle prepareLabelStyle(){

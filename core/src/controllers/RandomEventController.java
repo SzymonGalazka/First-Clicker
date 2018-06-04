@@ -4,7 +4,7 @@ package controllers;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Timer;
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 
 import ui.BasicDialog;
 
@@ -12,10 +12,10 @@ public class RandomEventController {
 
     public static final int RANDOM_TICK_INTERVAL = 15; //TODO change to higher value
 
-    private FirstClickerGame game;
+    private PierogiClicker game;
     private Stage stage;
 
-    public RandomEventController(FirstClickerGame game, Stage stage){
+    public RandomEventController(PierogiClicker game, Stage stage){
         this.game = game;
         this.stage = stage;
         init();

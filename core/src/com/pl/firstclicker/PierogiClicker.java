@@ -9,7 +9,7 @@ import service.FeatureFlagService;
 import service.ScoreService;
 import service.ShopService;
 
-public class FirstClickerGame extends Game {
+public class PierogiClicker extends Game {
 
 	public final static String GAME_NAME = "First Clicker";
 

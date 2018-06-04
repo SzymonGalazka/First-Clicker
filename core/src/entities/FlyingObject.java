@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 
 public class FlyingObject extends Image {
 
@@ -22,14 +22,14 @@ public class FlyingObject extends Image {
     public static int HEIGHT = 80;
 
     private final static int STARTING_X_1 = 0;
-    private final static int STARTING_X_2 = FirstClickerGame.WIDTH;
+    private final static int STARTING_X_2 = PierogiClicker.WIDTH;
     private final static int STARTING_Y = -100;
     private int startingX;
 
-    private FirstClickerGame game;
+    private PierogiClicker game;
     private FlyingObjectType type;
 
-    public FlyingObject(FlyingObjectType type, FirstClickerGame game) {
+    public FlyingObject(FlyingObjectType type, PierogiClicker game) {
         super(new Texture(getTextureString(type)));
 
         this.type = type;

@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 
 public class BasicDialog extends Image {
 
@@ -33,7 +33,7 @@ public class BasicDialog extends Image {
         labelStyle = new Label.LabelStyle();
         labelStyle.font = new BitmapFont(Gdx.files.internal("scriptfontbig.fnt"));
         label.setStyle(labelStyle);
-        label.setPosition(FirstClickerGame.WIDTH/2-60,640);
+        label.setPosition(PierogiClicker.WIDTH/2-60,640);
 
         this.addListener(new ClickListener(){
             @Override

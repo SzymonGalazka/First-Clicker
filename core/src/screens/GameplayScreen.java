@@ -4,7 +4,7 @@ package screens;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 
 import controllers.FlyingObjectController;
 import controllers.RandomEventController;
@@ -38,7 +38,7 @@ public class GameplayScreen extends AbstractScreen{
     private MainMenu mainMenu;
     private String pointsFormatted, passiveIncomeFormatted;
 
-    public GameplayScreen(FirstClickerGame game) {
+    public GameplayScreen(PierogiClicker game) {
         super(game);
     }
 
@@ -121,7 +121,7 @@ public class GameplayScreen extends AbstractScreen{
 
     private void initBg() {
         bgImg = new Image(new Texture("bg.png"));
-        bgImg.setSize(FirstClickerGame.WIDTH,FirstClickerGame.HEIGHT);
+        bgImg.setSize(PierogiClicker.WIDTH, PierogiClicker.HEIGHT);
         stage.addActor(bgImg);
         shelves = new Shelves();
         stage.addActor(shelves);
@@ -134,7 +134,7 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void initMainMenu() {
-        mainMenu = new MainMenu();
+        mainMenu = new MainMenu(game);
         mainMenuButton = new MainMenuButton(new IClickCallback() {
             @Override
             public void onClick() {

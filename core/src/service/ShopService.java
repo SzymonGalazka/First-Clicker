@@ -1,12 +1,12 @@
 package service;
 
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 
 public class ShopService {
 
-    static FirstClickerGame game;
+    static PierogiClicker game;
 
-    public ShopService(FirstClickerGame game) {
+    public ShopService(PierogiClicker game) {
         this.game = game;
     }
 

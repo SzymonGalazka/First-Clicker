@@ -3,7 +3,7 @@ package screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.pl.firstclicker.FirstClickerGame;
+import com.pl.firstclicker.PierogiClicker;
 import com.pl.firstclicker.IRequestCallback;
 
 public abstract class SplashScreen extends AbstractScreen{
@@ -11,7 +11,7 @@ public abstract class SplashScreen extends AbstractScreen{
     private Texture splashImage, noInternetImage;
     private boolean showError = false;
 
-    public SplashScreen(final FirstClickerGame game) {
+    public SplashScreen(final PierogiClicker game) {
         super(game);
         init();
     }
