@@ -46,12 +46,12 @@ public class ShopMenu extends Table {
 
 
         Table innerContainer = new Table();
-        innerContainer.padBottom(50f);
-        innerContainer.padTop(50f);
+        innerContainer.pad(50f,0,50f,0);
         for(ShopItem i : shopItems){
             innerContainer.add(i).expand().fill();
             innerContainer.row();
         }
+        innerContainer.setClip(true);
         scrollPane = new ScrollPane(innerContainer);
         this.add(scrollPane).fill().expand();
 

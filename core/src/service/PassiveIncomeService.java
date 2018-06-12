@@ -37,7 +37,7 @@ public class PassiveIncomeService {
     }
 
     private void addPointsBasedOnPassedTime(long seconds){
-        pointsToAdd = ((float)seconds * scoreService.getPassiveIncome())/6;
+        pointsToAdd = ((float)seconds * scoreService.getPassiveIncome())/2;
         scoreService.addPoints(pointsToAdd);
         System.out.println("Points added: "+ getPointsToAdd());
     }

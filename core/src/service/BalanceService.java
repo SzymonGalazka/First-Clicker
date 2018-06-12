@@ -16,7 +16,7 @@ public class BalanceService {
     public static final String REQUEST_URL ="http://szymongalazka.pythonanywhere.com/pierogiclicker/api/v1.0/balance";
     public static final String BALANCE_MONEY_CLICK = "BALANCE_PIEROGI_CLICK";
 
-    private int moneyClickValue;
+    private static float moneyClickValue;
 
     public void makeBalanceServiceRequest(final IRequestCallback request){
         HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
@@ -48,7 +48,7 @@ public class BalanceService {
             for(int i=0;i<jsonArray.length();i++){
                 JSONObject innerObj = jsonArray.getJSONObject(i);
                 if(innerObj.get("name").equals(BALANCE_MONEY_CLICK)) {
-                    moneyClickValue = (Integer) innerObj.get("value");
+                    moneyClickValue = innerObj.getFloat("value");
                     System.out.println("MoneyClickValue: "+ moneyClickValue);
                 }
             }
@@ -58,7 +58,7 @@ public class BalanceService {
     }
 
 
-    public int getMoneyClickValue() {
+    public static float getMoneyClickValue() {
         return moneyClickValue;
     }
 }

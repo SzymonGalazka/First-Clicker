@@ -3,6 +3,7 @@ package controllers;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Timer;
 import com.pl.firstclicker.PierogiClicker;
 
@@ -48,24 +49,28 @@ public class RandomEventController {
                 break;
         }
     }
+
     private void triggerDialog(String text){
         BasicDialog basicDialog = new BasicDialog();
+        basicDialog.setAlign(Align.center);
         basicDialog.showDialog(stage,text);
     }
 
     private void addPassiveIncome() {
-        game.getScoreService().addPassiveIncome();
-
-        triggerDialog("Your grandma is feeling better today,\nshe is making pierogies faster! \n (Passive income +1)");
+        float val = game.getScoreService().getClickvalue()*20;
+        game.getScoreService().addPassiveIncome(val);
+        triggerDialog("Your grandma is \nfeeling better today,\nshe is making pierogies faster! \n (Passive income "+val+")");
     }
 
     private void addMoneyEvent() {
-        game.getScoreService().addPoints(200);
-        triggerDialog( "You just found some \npierogies on the floor! \n(Pierogies +200)");
+        float val = game.getScoreService().getClickvalue()*200;
+        game.getScoreService().addPoints(val);
+        triggerDialog( "You just found \n some pierogies on the floor! \n(Pierogies "+val+")");
     }
     private void loseMoneyEvent() {
-        game.getScoreService().addPoints(-150);
-        triggerDialog( "You fucked up\n some pierogies! \n(Pierogies -150)");
+        float val = game.getScoreService().getClickvalue()*-150;
+        game.getScoreService().addPoints(val);
+        triggerDialog( "You ruined\n some good pierogies! \n(Pierogies "+val+")");
     }
 
 }

@@ -32,7 +32,8 @@ public class ShopItem extends Table{
     }
 
     private void displayItem() {
-        this.add(new Image(texture)).width(100f).height(100f);
+        this.add(new Label(" ",labelStyle)).width(30f).expandY().fillY();
+        this.add(new Image(texture)).width(90f).height(90f);
         this.add(new Label(" ",labelStyle)).width(30f).expandY().fillY();
         this.add(new Label(title,bigLabelStyle)).width(100f).height(260f).padTop(-100f);
         this.add(new Label(" ",labelStyle)).width(160f).expandY().fillY();
@@ -44,13 +45,13 @@ public class ShopItem extends Table{
             public void onClick() {
                 if(!x1.isDisabled()) buyItem(1);
             }
-        })).width(150f).height(35f).padTop(-100f);
+        })).width(130f).height(40f).padTop(-90f);
         this.add(x10 = new ShopBuyButton(true,new IClickCallback() {
             @Override
             public void onClick() {
                 if(!x10.isDisabled()) buyItem(10);
             }
-        })).width(150f).height(35f).padLeft(-150f).padBottom(-40);
+        })).width(130f).height(40f).padLeft(-130f).padBottom(-40);
 
     }
 

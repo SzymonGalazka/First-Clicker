@@ -51,8 +51,8 @@ public class FlyingObject extends Image {
     }
 
     private void reactOnClick() {
-        if(FlyingObjectType.PIEROG.equals(type)) game.getScoreService().addPoints(game.getBalanceService().getMoneyClickValue());
-        else if (FlyingObjectType.FLOUR.equals(type)) game.getScoreService().addPassiveIncome(0.1f);
+        if(FlyingObjectType.PIEROG.equals(type)) game.getScoreService().addPoints(game.getScoreService().getClickvalue()*10);
+        else if (FlyingObjectType.FLOUR.equals(type)) game.getScoreService().addPassiveIncome(game.getScoreService().getClickvalue()*5);
         FlyingObject.this.remove();
     }
 

@@ -107,7 +107,6 @@ public class GameplayScreen extends AbstractScreen{
         passiveIncomeFormatted = "\n\nPASSIVE\nINCOME: "+ String.format("%.2f", game.getScoreService().getPassiveIncome());
         gameLabel.setText(pointsFormatted+passiveIncomeFormatted);
         stage.act();
-
     }
 
     private void initPassiveIncomeService() {
