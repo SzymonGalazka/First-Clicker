@@ -1,7 +1,6 @@
 package com.pl.firstclicker;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.Color;
 
 import screens.SplashScreen;
 import service.BalanceService;
@@ -15,8 +14,7 @@ public class PierogiClicker extends Game {
 
 	public static int WIDTH = 720;
 	public static int HEIGHT = 1280;
-
-	public static Color pinky = new Color(192f/255f, 132f/255f, 151f/255f, 255f/255f);
+	
 	private ScoreService scoreService;
 	private FeatureFlagService featureFlagService;
 	private BalanceService balanceService;

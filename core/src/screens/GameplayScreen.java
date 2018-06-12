@@ -9,7 +9,7 @@ import com.pl.firstclicker.PierogiClicker;
 import controllers.FlyingObjectController;
 import controllers.RandomEventController;
 import entities.ClickablePierogi;
-import entities.Shelves;
+import ui.Shelves;
 import service.FeatureFlagService;
 import service.PassiveIncomeService;
 import ui.BasicDialog;
@@ -102,8 +102,8 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void update() {
-        shopMenu.setButtons();
-        pointsFormatted = "PIEROGIES: "+String.format("%.2f", game.getScoreService().getPoints());
+        if(game.getFeatureFlagService().hasFeature(FeatureFlagService.FEATURE_SHOP)) shopMenu.setButtons();
+        pointsFormatted = "PIEROGIES: \n"+String.format("%.2f", game.getScoreService().getPoints());
         passiveIncomeFormatted = "\n\nPASSIVE\nINCOME: "+ String.format("%.2f", game.getScoreService().getPassiveIncome());
         gameLabel.setText(pointsFormatted+passiveIncomeFormatted);
         stage.act();

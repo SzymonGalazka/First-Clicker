@@ -6,15 +6,16 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Align;
 import com.pl.firstclicker.PierogiClicker;
 
 public class MainMenu extends Table {
 
-    private Label.LabelStyle labelStyle;
+    private Label.LabelStyle labelStyle, warningLabelStyle;
     private Image menuBackground;
     private boolean menuHidden, warned;
     private PierogiClicker game;
-    private Label warningLabel;
+    private Label warningLabel, menuLabel;
 
     public MainMenu(PierogiClicker game){
         this.game = game;
@@ -28,7 +29,7 @@ public class MainMenu extends Table {
     }
 
     private void init() {
-        this.add(new Label("MAIN MENU",labelStyle)).height(100f).padTop(20f);
+        this.add(menuLabel).height(100f).padTop(20f);
         this.row();
         this.add(new MenuUIButton(true, new IClickCallback() {
             @Override
@@ -75,9 +76,13 @@ public class MainMenu extends Table {
     private void prepareContents() {
         labelStyle = new Label.LabelStyle();
         labelStyle.font = new BitmapFont(Gdx.files.internal("scriptfontbig.fnt"));
+        warningLabelStyle = new Label.LabelStyle();
+        warningLabelStyle.font = new BitmapFont(Gdx.files.internal("descfont.fnt"));
         menuBackground = new Image(new Texture("shopBg.png"));
         this.setBackground(menuBackground.getDrawable());
-        warningLabel = new Label("THIS WILL ERASE \nYOUR WHOLE PROGRESS.\nARE YOU SURE?",labelStyle);
+        menuLabel = new Label("MAIN MENU \n Created by Szymon Galazka",labelStyle);
+        menuLabel.setAlignment(Align.center);
+        warningLabel = new Label("THIS WILL ERASE \nYOUR WHOLE PROGRESS.\nARE YOU SURE?",warningLabelStyle);
     }
 
 }

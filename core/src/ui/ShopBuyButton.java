@@ -32,7 +32,7 @@ public class ShopBuyButton extends Button {
     }
 
     private static ButtonStyle prepareShopButtonStyle(boolean multipleClick){
-        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("buyButtons.atlas"));
+        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("buttons.atlas"));
         Skin skin = new Skin(atlas);
         ButtonStyle buttonStyle = new ButtonStyle();
         if(!multipleClick) {

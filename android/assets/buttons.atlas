@@ -1,33 +1,47 @@
 
-buyButtons.png
+buttons.png
 size: 1024,64
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 buy10Button
   rotate: false
-  xy: 2, 2
+  xy: 284, 2
   size: 139, 35
   orig: 139, 35
   offset: 0, 0
   index: -1
 buy10GrayButton
   rotate: false
-  xy: 143, 2
+  xy: 425, 2
   size: 139, 35
   orig: 139, 35
   offset: 0, 0
   index: -1
 buyButton
   rotate: false
-  xy: 284, 2
+  xy: 566, 2
   size: 139, 35
   orig: 139, 35
   offset: 0, 0
   index: -1
 buyGrayButton
   rotate: false
-  xy: 425, 2
+  xy: 707, 2
+  size: 139, 35
+  orig: 139, 35
+  offset: 0, 0
+  index: -1
+exitButton
+  rotate: false
+  xy: 143, 2
+  size: 139, 35
+  orig: 139, 35
+  offset: 0, 0
+  index: -1
+resetButton
+  rotate: false
+  xy: 2, 2
   size: 139, 35
   orig: 139, 35
   offset: 0, 0

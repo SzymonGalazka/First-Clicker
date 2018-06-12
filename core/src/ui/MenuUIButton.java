@@ -28,11 +28,11 @@ public class MenuUIButton extends Button {
     }
 
     private static ButtonStyle prepareResetButtonStyle(boolean r){
-        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("buyButtons.atlas"));
+        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("buttons.atlas"));
         Skin skin = new Skin(atlas);
         ButtonStyle buttonStyle = new ButtonStyle();
-        if(r) buttonStyle.up = skin.getDrawable("buyButton");
-        else buttonStyle.up = skin.getDrawable("buy10Button");
+        if(r) buttonStyle.up = skin.getDrawable("resetButton");
+        else buttonStyle.up = skin.getDrawable("exitButton");
         return buttonStyle;
     }
 }

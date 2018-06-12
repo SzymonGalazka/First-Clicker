@@ -36,7 +36,7 @@ public class ShopItem extends Table{
         this.add(new Label(" ",labelStyle)).width(30f).expandY().fillY();
         this.add(new Label(title,bigLabelStyle)).width(100f).height(260f).padTop(-100f);
         this.add(new Label(" ",labelStyle)).width(160f).expandY().fillY();
-        this.add(new Label(price+"\npierogies",bigLabelStyle)).width(10f).height(260f).padTop(-60f);
+        this.add(new Label((int)price+"\npierogies",bigLabelStyle)).width(10f).height(260f).padTop(-60f);
         this.add(new Label(descr,labelStyle)).width(100f).height(60f).padLeft(-440f).padTop(30f);
         this.add(new Label(" ",labelStyle)).width(140f).expandY().fillY();
         this.add(x1 = new ShopBuyButton(false,new IClickCallback() {
@@ -64,7 +64,7 @@ public class ShopItem extends Table{
         texture = new Texture(texturePath);
         labelStyle = new Label.LabelStyle();
         bigLabelStyle = new Label.LabelStyle();
-        labelStyle.font = new BitmapFont(Gdx.files.internal("scriptfont.fnt"));
+        labelStyle.font = new BitmapFont(Gdx.files.internal("descfont.fnt"));
         bigLabelStyle.font = new BitmapFont(Gdx.files.internal("scriptfontbig.fnt"));
     }
 
