@@ -1,8 +1,9 @@
 package entities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -13,17 +14,16 @@ import ui.ShopBuyButton;
 
 public class ShopItem extends Table{
 
-
-    private Texture texture;
-    private String title,descr, texturePath, itemType;
+    private String title,descr, iconName, itemType;
     private Label.LabelStyle labelStyle, bigLabelStyle;
     private float price,toAdd;
     private ShopBuyButton x1, x10;
 
-    public ShopItem(String texturePath, String title,String descr, float price, float toAdd, String itemType) {
-        this.texturePath = texturePath;
+    public ShopItem(String iconName, String title,String descr, float price, float toAdd, String itemType) {
+        this.iconName = iconName;
         this.title = title;
-        this.descr = descr;
+        if (itemType=="PASSIVE") this.descr = "(+"+toAdd+" passive income)\n"+descr;
+        else if(itemType=="POINTS") this.descr = "(+"+toAdd+" tap value)\n"+descr;
         this.price = price;
         this.toAdd = toAdd;
         this.itemType = itemType;
@@ -33,7 +33,7 @@ public class ShopItem extends Table{
 
     private void displayItem() {
         this.add(new Label(" ",labelStyle)).width(30f).expandY().fillY();
-        this.add(new Image(texture)).width(90f).height(90f);
+        this.add(new Image(prepareIcon())).width(100f).height(100f);
         this.add(new Label(" ",labelStyle)).width(30f).expandY().fillY();
         this.add(new Label(title,bigLabelStyle)).width(100f).height(260f).padTop(-100f);
         this.add(new Label(" ",labelStyle)).width(160f).expandY().fillY();
@@ -60,9 +60,13 @@ public class ShopItem extends Table{
         else if(itemType=="POINTS") ShopService.addPointsFromShop(mul*toAdd,mul*price);
     }
 
+    private TextureRegion prepareIcon(){
+        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("shopIcons.atlas"));
+        TextureRegion textureRegion = atlas.findRegion(iconName);
+        return textureRegion;
+    }
 
     private void prepareContents() {
-        texture = new Texture(texturePath);
         labelStyle = new Label.LabelStyle();
         bigLabelStyle = new Label.LabelStyle();
         labelStyle.font = new BitmapFont(Gdx.files.internal("descfont.fnt"));

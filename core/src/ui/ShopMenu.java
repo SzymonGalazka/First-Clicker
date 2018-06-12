@@ -22,7 +22,7 @@ public class ShopMenu extends Table {
 
     public ShopMenu(PierogiClicker game) {
         super();
-        this.game = game;
+        ShopMenu.game = game;
         this.setWidth(PierogiClicker.WIDTH);
         this.setHeight(PierogiClicker.HEIGHT-280f);
         this.setPosition(0,30);
@@ -36,13 +36,13 @@ public class ShopMenu extends Table {
         this.setBackground(shopBg.getDrawable());
     }
     private void showContents(){
-        shopItems.add(new ShopItem("shopIcon.png","Blue Energy drink","(+1 passive income)\nGives your grandma a solid boost!",20,0.1f,"PASSIVE"));
-        shopItems.add(new ShopItem("shopIcon.png","Red Energy drink","(+3 passive income)\nGives youur grandma enormous boost!",50,0.3f,"PASSIVE"));
-        shopItems.add(new ShopItem("shopIcon.png","Black Energy drink","(+10 passive income)\nGives your grandma incredible boost!",200,0.5f,"PASSIVE"));
-        shopItems.add(new ShopItem("shopIcon.png","Neighbour visit","(+600 pierogies)\nYour grandma's sweetheart came here to help!",500,600,"POINTS"));
-        shopItems.add(new ShopItem("shopIcon.png","Country club","(+2600 pierogies)\nThe whole village is helping!",2000,2600,"POINTS"));
-        shopItems.add(new ShopItem("shopIcon.png","Title","gives you a solid boost!",5000,5600,"POINTS"));
-        shopItems.add(new ShopItem("shopIcon.png","Title","gives you a solid boost!",100000,10600,"POINTS"));
+        shopItems.add(new ShopItem("BlueEnergyDrink","Blue Energy drink","Gives your grandma a solid boost!",20,0.1f,"PASSIVE"));
+        shopItems.add(new ShopItem("RedEnergyDrink","Red Energy drink","Gives youur grandma enormous boost!",50,0.3f,"PASSIVE"));
+        shopItems.add(new ShopItem("BlackEnergyDrink","Black Energy drink","Gives your grandma incredible boost!",200,0.5f,"PASSIVE"));
+        shopItems.add(new ShopItem("BlueEnergyDrink","Neighbour visit","Your grandma's sweetheart came here to help!",500,600,"POINTS"));
+        shopItems.add(new ShopItem("BlueEnergyDrink","Country club","The whole village is helping!",2000,2600,"POINTS"));
+        shopItems.add(new ShopItem("BlueEnergyDrink","Title","gives you a solid boost!",5000,5600,"POINTS"));
+        shopItems.add(new ShopItem("BlueEnergyDrink","Title","gives you a solid boost!",100000,10600,"POINTS"));
 
 
         Table innerContainer = new Table();

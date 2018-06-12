@@ -7,7 +7,7 @@ public class ShopService {
     static PierogiClicker game;
 
     public ShopService(PierogiClicker game) {
-        this.game = game;
+        ShopService.game = game;
     }
 
     public void openShop(){

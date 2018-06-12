@@ -1,0 +1,27 @@
+
+shopIcons.png
+size: 512,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+BlackEnergyDrink
+  rotate: false
+  xy: 2, 2
+  size: 101, 101
+  orig: 101, 101
+  offset: 0, 0
+  index: -1
+BlueEnergyDrink
+  rotate: false
+  xy: 105, 2
+  size: 101, 101
+  orig: 101, 101
+  offset: 0, 0
+  index: -1
+RedEnergyDrink
+  rotate: false
+  xy: 208, 2
+  size: 101, 101
+  orig: 101, 101
+  offset: 0, 0
+  index: -1

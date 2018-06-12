@@ -9,6 +9,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
+
 import static com.badlogic.gdx.Net.HttpMethods.GET;
 
 public class BalanceService {
@@ -48,7 +50,7 @@ public class BalanceService {
             for(int i=0;i<jsonArray.length();i++){
                 JSONObject innerObj = jsonArray.getJSONObject(i);
                 if(innerObj.get("name").equals(BALANCE_MONEY_CLICK)) {
-                    moneyClickValue = innerObj.getFloat("value");
+                    moneyClickValue = BigDecimal.valueOf(innerObj.getDouble("value")).floatValue();
                     System.out.println("MoneyClickValue: "+ moneyClickValue);
                 }
             }

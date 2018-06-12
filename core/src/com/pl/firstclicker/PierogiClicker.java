@@ -14,7 +14,7 @@ public class PierogiClicker extends Game {
 
 	public static int WIDTH = 720;
 	public static int HEIGHT = 1280;
-	
+
 	private ScoreService scoreService;
 	private FeatureFlagService featureFlagService;
 	private BalanceService balanceService;

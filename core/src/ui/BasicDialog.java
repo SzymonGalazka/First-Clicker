@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.pl.firstclicker.PierogiClicker;
 
 public class BasicDialog extends Image {
 
@@ -33,7 +32,7 @@ public class BasicDialog extends Image {
         labelStyle = new Label.LabelStyle();
         labelStyle.font = new BitmapFont(Gdx.files.internal("scriptfontbig.fnt"));
         label.setStyle(labelStyle);
-        label.setPosition(PierogiClicker.WIDTH/2-60,640);
+        label.setPosition(this.getWidth()/3,640);
 
         this.addListener(new ClickListener(){
             @Override
@@ -53,6 +52,7 @@ public class BasicDialog extends Image {
     private void fadeOutDialog() {
         SequenceAction sequence = Actions.sequence();
         sequence.addAction(Actions.fadeOut(1f));
+        sequence.addAction(Actions.rotateBy(120));
         sequence.addAction(new Action() {
             @Override
             public boolean act(float delta) {

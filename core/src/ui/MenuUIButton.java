@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class MenuUIButton extends Button {
 
     public MenuUIButton(boolean r,IClickCallback callback){
-        super(prepareResetButtonStyle(r));
+        super(prepareMenuButtonStyle(r));
         init(callback);
     }
 
@@ -27,7 +27,7 @@ public class MenuUIButton extends Button {
         });
     }
 
-    private static ButtonStyle prepareResetButtonStyle(boolean r){
+    private static ButtonStyle prepareMenuButtonStyle(boolean r){
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("buttons.atlas"));
         Skin skin = new Skin(atlas);
         ButtonStyle buttonStyle = new ButtonStyle();
