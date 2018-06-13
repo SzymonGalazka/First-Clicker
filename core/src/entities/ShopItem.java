@@ -32,7 +32,6 @@ public class ShopItem extends Table{
     }
 
     private void displayItem() {
-        this.add(new Label(" ",labelStyle)).width(30f).expandY().fillY();
         this.add(new Image(prepareIcon())).width(100f).height(100f);
         this.add(new Label(" ",labelStyle)).width(30f).expandY().fillY();
         this.add(new Label(title,bigLabelStyle)).width(100f).height(260f).padTop(-100f);

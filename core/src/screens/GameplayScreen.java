@@ -80,7 +80,7 @@ public class GameplayScreen extends AbstractScreen{
     private void initPassiveIncomeDialog() {
         if(passiveIncomeService.getPointsToAdd()>0){
             BasicDialog basicDialog = new BasicDialog();
-            basicDialog.showDialog(stage, "Passive income \ngained: " + String.format("%.2f",passiveIncomeService.getPointsToAdd()));
+            basicDialog.showDialog(stage, "Passive income gained: \n" + String.format("%.2f",passiveIncomeService.getPointsToAdd()));
         }
     }
 
@@ -88,7 +88,6 @@ public class GameplayScreen extends AbstractScreen{
     public void render(float delta){
         super.render(delta);
         update();
-        //System.out.println("Points:  "+game.getPoints());
         spriteBatch.begin();
         stage.draw();
         spriteBatch.end();

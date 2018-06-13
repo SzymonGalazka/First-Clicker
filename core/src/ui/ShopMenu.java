@@ -39,10 +39,10 @@ public class ShopMenu extends Table {
         shopItems.add(new ShopItem("BlueEnergyDrink","Blue Energy drink","Gives your grandma a solid boost!",20,0.1f,"PASSIVE"));
         shopItems.add(new ShopItem("RedEnergyDrink","Red Energy drink","Gives youur grandma enormous boost!",50,0.3f,"PASSIVE"));
         shopItems.add(new ShopItem("BlackEnergyDrink","Black Energy drink","Gives your grandma incredible boost!",200,0.5f,"PASSIVE"));
-        shopItems.add(new ShopItem("BlueEnergyDrink","Neighbour visit","Your grandma's sweetheart came here to help!",500,600,"POINTS"));
-        shopItems.add(new ShopItem("BlueEnergyDrink","Country club","The whole village is helping!",2000,2600,"POINTS"));
-        shopItems.add(new ShopItem("BlueEnergyDrink","Title","gives you a solid boost!",5000,5600,"POINTS"));
-        shopItems.add(new ShopItem("BlueEnergyDrink","Title","gives you a solid boost!",100000,10600,"POINTS"));
+        shopItems.add(new ShopItem("Stock","Chicken Stock","Delicious, healthy grandma's stock!",500,600,"POINTS"));
+        shopItems.add(new ShopItem("NoodleStock","Extra Chicken Stock","Stock with tasty handmade noodles!",2000,2600,"POINTS"));
+        shopItems.add(new ShopItem("BettysVisit","Betty's visit","Grandma's friend came here to help!",5000,5600,"POINTS"));
+        shopItems.add(new ShopItem("FarmViwes","Farm wives","The whole village is helping!",100000,10600,"POINTS"));
 
 
         Table innerContainer = new Table();

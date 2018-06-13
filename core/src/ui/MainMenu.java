@@ -78,7 +78,7 @@ public class MainMenu extends Table {
         labelStyle.font = new BitmapFont(Gdx.files.internal("scriptfontbig.fnt"));
         warningLabelStyle = new Label.LabelStyle();
         warningLabelStyle.font = new BitmapFont(Gdx.files.internal("descfont.fnt"));
-        menuBackground = new Image(new Texture("shopBg.png"));
+        menuBackground = new Image(new Texture("mainMenuBg.png"));
         this.setBackground(menuBackground.getDrawable());
         menuLabel = new Label("MAIN MENU \n Created by Szymon Galazka",labelStyle);
         menuLabel.setAlignment(Align.center);
