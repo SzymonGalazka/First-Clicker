@@ -1,23 +1,27 @@
 package screens;
 
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Array;
 import com.pl.firstclicker.PierogiClicker;
 
 import controllers.FlyingObjectController;
 import controllers.RandomEventController;
+import entities.BgAnimator;
 import entities.ClickablePierogi;
-import ui.Shelves;
 import service.FeatureFlagService;
 import service.PassiveIncomeService;
 import ui.BasicDialog;
 import ui.GameLabel;
 import ui.IClickCallback;
 import ui.MainMenu;
-import ui.PlayerButton;
 import ui.MainMenuButton;
+import ui.PlayerButton;
+import ui.Shelves;
 import ui.ShopButton;
 import ui.ShopMenu;
 
@@ -37,6 +41,8 @@ public class GameplayScreen extends AbstractScreen{
     private boolean pierogiSwitch = false;
     private MainMenu mainMenu;
     private String pointsFormatted, passiveIncomeFormatted;
+    private Animation bgAnimation;
+    private BgAnimator anim;
 
     public GameplayScreen(PierogiClicker game) {
         super(game);
@@ -117,9 +123,16 @@ public class GameplayScreen extends AbstractScreen{
     }
 
     private void initBg() {
-        bgImg = new Image(new Texture("bg.png"));
+        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("bgGrandma.atlas"));
+        Array<TextureAtlas.AtlasRegion> bgFrames = atlas.findRegions("bg");
+        bgImg = new Image(bgFrames.first());
         bgImg.setSize(PierogiClicker.WIDTH, PierogiClicker.HEIGHT);
+        bgAnimation = new Animation(0.15f,bgFrames, Animation.PlayMode.LOOP);
+        anim = new BgAnimator(bgAnimation);
+
         stage.addActor(bgImg);
+        stage.addActor(anim);
+
         shelves = new Shelves();
         stage.addActor(shelves);
 
