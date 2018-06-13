@@ -55,20 +55,20 @@ public class RandomEventController {
     }
 
     private void addPassiveIncome() {
-        float val = game.getScoreService().getClickvalue()*20;
+        float val = game.getScoreService().getClickvalue()*2;
         game.getScoreService().addPassiveIncome(val);
         triggerDialog("Your grandma is \nfeeling better today,\nshe is making pierogies faster! \n (Passive income +"+val+")");
     }
 
     private void addMoneyEvent() {
-        float val = game.getScoreService().getClickvalue()*200;
+        float val = game.getScoreService().getClickvalue()*20;
         game.getScoreService().addPoints(val);
         triggerDialog( "You just found  some \npierogies on the floor! \n(Pierogies +"+val+")");
     }
     private void loseMoneyEvent() {
-        float val = game.getScoreService().getClickvalue()*-150;
+        float val = game.getScoreService().getClickvalue()*-15;
         game.getScoreService().addPoints(val);
-        triggerDialog( "You ruined\n some good pierogies! \n(Pierogies -"+val+")");
+        triggerDialog( "You ruined\n some good pierogies! \n(Pierogies "+val+")");
     }
 
 }

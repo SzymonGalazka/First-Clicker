@@ -23,7 +23,8 @@ public class ShopItem extends Table{
         this.iconName = iconName;
         this.title = title;
         if (itemType=="PASSIVE") this.descr = "(+"+toAdd+" passive income)\n"+descr;
-        else if(itemType=="POINTS") this.descr = "(+"+toAdd+" tap value)\n"+descr;
+        else if(itemType=="POINTS") this.descr = "(x"+toAdd+" tap value)\n"+descr;
+        else if(itemType=="PASSIVEMULTIPLY") this.descr = "(x"+toAdd+" passive income)\n"+descr;
         this.price = price;
         this.toAdd = toAdd;
         this.itemType = itemType;
@@ -56,7 +57,8 @@ public class ShopItem extends Table{
 
     private void buyItem(int mul){
         if(itemType=="PASSIVE") ShopService.addPassiveIncomeFromShop(mul*toAdd,mul*price);
-        else if(itemType=="POINTS") ShopService.addPointsFromShop(mul*toAdd,mul*price);
+        else if(itemType=="POINTS") ShopService.multiplyPointsFromShop(mul*toAdd,mul*price);
+        else if(itemType=="PASSIVEMULTIPLY") ShopService.multiplyPassiveIncomeFromShop(mul*toAdd,mul*price);
     }
 
     private TextureRegion prepareIcon(){

@@ -62,7 +62,6 @@ public class GameplayScreen extends AbstractScreen{
             shopButton = new ShopButton(new IClickCallback() {
                 @Override
                 public void onClick() {
-                    game.getShopService().openShop();
                     shopMenu.displayMenu();
                     if(game.isPaused()) game.setPaused(false);
                     else pause();

@@ -3,6 +3,9 @@ package ui;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Interpolation;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -21,7 +24,7 @@ public class MainMenu extends Table {
         this.game = game;
         this.setWidth(2* PierogiClicker.WIDTH/3);
         this.setHeight(PierogiClicker.HEIGHT/3);
-        this.setPosition(PierogiClicker.WIDTH/6,3* PierogiClicker.WIDTH/4);
+        this.setPosition(PierogiClicker.WIDTH,3* PierogiClicker.WIDTH/4);
         this.setVisible(false);
 
         prepareContents();
@@ -65,12 +68,27 @@ public class MainMenu extends Table {
     public void displayMenu(){
         if(menuHidden){
             hideWarning();
-            this.setVisible(false);
+            animate(false);
             menuHidden = false;
         }else{
+            animate(true);
             this.setVisible(true);
             menuHidden = true;
         }
+    }
+
+    private void animate(boolean forward) {
+        Action moveAction;
+        if(forward) {
+            moveAction = Actions.sequence(
+                    Actions.moveBy(-5*PierogiClicker.WIDTH/6-50, 0, 0.5f, Interpolation.smoother),
+                    Actions.moveBy(50,0,0.2f,Interpolation.smoother)
+            );
+        } else{
+            moveAction = Actions.sequence(
+                    Actions.moveBy(5*PierogiClicker.WIDTH/6, 0, 0.5f, Interpolation.circleOut)
+            );
+        }this.addAction(moveAction);
     }
 
     private void prepareContents() {

@@ -45,13 +45,15 @@ public class ScoreService {
         points += pointsToAdd;
     }
 
-    public void addPassiveIncome() {
-        passiveIncome+=clickvalue;
-    }
-
     public void addPassiveIncome(float income){
         passiveIncome+=income;
     }
+
+    public void multiplyPassiveIncome(float toAdd) {
+        passiveIncome *= toAdd;
+    }
+
+
 
     public void resetGameScore() {
         points = 0;
@@ -63,8 +65,8 @@ public class ScoreService {
         return points;
     }
 
-    public void setClickvalue(float clickvalue) {
-        this.clickvalue = clickvalue;
+    public void multiplyClickvalue(float clickvalue) {
+        this.clickvalue *= clickvalue;
     }
 
     public  float getClickvalue() {
