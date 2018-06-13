@@ -44,6 +44,9 @@ public class ShopMenu extends Table {
         shopItems.add(new ShopItem("RedEnergyDrink","Red Energy drink","Gives youur grandma enormous boost!",50,0.3f,"PASSIVE"));
         shopItems.add(new ShopItem("BlackEnergyDrink","Black Energy drink","Gives your grandma incredible boost!",200,0.5f,"PASSIVE"));
         shopItems.add(new ShopItem("Stock","Chicken Stock","Delicious, healthy grandma's stock!",500,2,"POINTS"));
+        shopItems.add(new ShopItem("NoodleStock","Extra Chicken Stock","Stock with tasty handmade noodles!",2000,3,"POINTS"));
+        shopItems.add(new ShopItem("BettysVisit","Betty's visit","Grandma's friend came here to help!",5000,5,"POINTS"));
+        shopItems.add(new ShopItem("FarmViwes","Farm wives","The whole village is helping!",100000,2,"PASSIVEMULTIPLY"));
 
         Table innerContainer = new Table();
         innerContainer.pad(50f,0,50f,0);
