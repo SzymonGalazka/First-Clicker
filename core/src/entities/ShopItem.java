@@ -56,7 +56,10 @@ public class ShopItem extends Table{
     }
 
     private void buyItem(int mul){
-        if(itemType=="PASSIVE") ShopService.addPassiveIncomeFromShop(mul*toAdd,mul*price);
+        if(itemType=="PASSIVE"){
+            ShopService.addPassiveIncomeFromShop(mul*toAdd,mul*price);
+            if(this.title.contains("drink")) BgAnimator.changeSpeed();
+        }
         else if(itemType=="POINTS") ShopService.multiplyPointsFromShop(mul*toAdd,mul*price);
         else if(itemType=="PASSIVEMULTIPLY") ShopService.multiplyPassiveIncomeFromShop(mul*toAdd,mul*price);
     }
